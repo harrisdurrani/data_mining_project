@@ -8,6 +8,7 @@ authors = [
 dependencies = [
     "ucimlrepo>=0.0.7",
     "ipykernel>=7.1.0",
+    "pandas>=3.0.0",
 ]
 requires-python = ">=3.11"
 readme = "README.md"
