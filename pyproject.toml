@@ -11,6 +11,7 @@ dependencies = [
     "pandas>=3.0.0",
     "matplotlib>=3.10.8",
     "scipy>=1.17.0",
+    "sklearn>=0.0.post12",
 ]
 requires-python = ">=3.11"
 readme = "README.md"
