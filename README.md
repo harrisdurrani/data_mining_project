@@ -1,1 +1,1 @@
-# data_mining_project
+# Cancer time-event analysis for risk factors towards death
