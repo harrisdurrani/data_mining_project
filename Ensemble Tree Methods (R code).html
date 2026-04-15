@@ -7526,7 +7526,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [269]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [72]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span>
@@ -7535,6 +7535,7 @@ a.anchor-link {
 <span class="w">  </span><span class="s">"survival"</span><span class="p">,</span><span class="w">        </span><span class="c1"># Surv() objects and core survival analysis tools</span>
 <span class="w">  </span><span class="s">"rpart"</span><span class="p">,</span><span class="w">           </span><span class="c1"># single decision / survival trees</span>
 <span class="w">  </span><span class="s">"gbm"</span><span class="p">,</span><span class="w">             </span><span class="c1"># boosting, including Cox PH survival boosting</span>
+<span class="w">  </span><span class="s">"xgboost"</span><span class="p">,</span><span class="w">            </span><span class="c1"># Bayesian additive regression trees</span>
 <span class="w">  </span><span class="s">"ipred"</span><span class="p">,</span><span class="w">           </span><span class="c1"># bagging, including bagged survival trees</span>
 <span class="w">  </span><span class="s">"randomForestSRC"</span><span class="w">  </span><span class="c1"># random forests for survival</span>
 <span class="p">))</span>
@@ -7552,6 +7553,19 @@ a.anchor-link {
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
 <pre>Warning message:
 "packages 'tidyverse', 'moments', 'survival', 'rpart', 'gbm', 'ipred', 'randomForestSRC' are in use and will not be installed"
+Installing package into 'C:/Users/dimar/AppData/Local/R/win-library/4.5'
+(as 'lib' is unspecified)
+
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>package 'xgboost' successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\dimar\AppData\Local\Temp\Rtmpwd8Fuf\downloaded_packages
 </pre>
 </div>
 </div>
@@ -7584,7 +7598,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [270]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Set seed for reproducibility from top of file (top down running)</span>
@@ -7617,12 +7631,12 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4666683e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4666683e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [271]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">tidyverse</span><span class="p">)</span>
@@ -7630,11 +7644,68 @@ a.anchor-link {
 <span class="nf">library</span><span class="p">(</span><span class="n">survival</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">rpart</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">gbm</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">xgboost</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">ipred</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">randomForestSRC</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">xgboost</span><span class="p">)</span>
-<span class="nf">library</span><span class="p">(</span><span class="n">Matrix</span><span class="p">)</span><span class="w"> </span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
+<pre>Warning message:
+"package 'tidyverse' was built under R version 4.5.3"
+── <span class="ansi-bold">Attaching core tidyverse packages</span> ──────────────────────── tidyverse 2.0.0 ──
+<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">dplyr    </span> 1.1.4     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">readr    </span> 2.1.5
+<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">forcats  </span> 1.0.0     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">stringr  </span> 1.5.1
+<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">ggplot2  </span> 4.0.0     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">tibble   </span> 3.3.0
+<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">lubridate</span> 1.9.4     <span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">tidyr    </span> 1.3.1
+<span class="ansi-green-fg">✔</span> <span class="ansi-blue-fg">purrr    </span> 1.1.0     
+── <span class="ansi-bold">Conflicts</span> ────────────────────────────────────────── tidyverse_conflicts() ──
+<span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">dplyr</span>::<span class="ansi-green-fg">filter()</span> masks <span class="ansi-blue-fg">stats</span>::filter()
+<span class="ansi-red-fg">✖</span> <span class="ansi-blue-fg">dplyr</span>::<span class="ansi-green-fg">lag()</span>    masks <span class="ansi-blue-fg">stats</span>::lag()
+<span class="ansi-cyan-fg">ℹ</span> Use the conflicted package (<span class="ansi-blue-fg">&lt;http://conflicted.r-lib.org/&gt;</span>) to force all conflicts to become errors
+Warning message:
+"package 'moments' was built under R version 4.5.2"
+Warning message:
+"package 'survival' was built under R version 4.5.3"
+Warning message:
+"package 'rpart' was built under R version 4.5.3"
+Warning message:
+"package 'gbm' was built under R version 4.5.3"
+Loaded gbm 2.2.3
+
+This version of gbm is no longer under development. Consider transitioning to gbm3, https://github.com/gbm-developers/gbm3
+
+Warning message:
+"package 'xgboost' was built under R version 4.5.3"
+Warning message:
+"package 'ipred' was built under R version 4.5.3"
+Warning message:
+"package 'randomForestSRC' was built under R version 4.5.3"
+
+ randomForestSRC 3.6.1 
+ 
+ Type rfsrc.news() to see new features, changes, and bug fixes. 
+ 
+
+
+
+Attaching package: 'randomForestSRC'
+
+
+The following object is masked from 'package:purrr':
+
+    partial
+
+
+</pre>
 </div>
 </div>
 </div>
@@ -7666,7 +7737,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [272]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="n">raw_df</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">"METABRIC_RNA_Mutation.csv"</span><span class="p">)</span>
@@ -7733,7 +7804,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [273]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Missing / empty / zero summary table</span>
@@ -7851,7 +7922,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [274]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Mean time to event by tumor stage (ignoring missing)</span>
@@ -7895,7 +7966,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [275]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Event distributions (alive or dead)</span>
@@ -7935,7 +8006,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [276]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># spotted typo, but will leave as is.</span>
@@ -7995,7 +8066,7 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [277]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="n">clinical_vars</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raw_df</span><span class="w"> </span><span class="o">%&gt;%</span>
@@ -8018,7 +8089,7 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [278]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Predictor variable counts by type</span>
@@ -8101,7 +8172,7 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [279]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Quick glance at shape, types, and classes </span>
@@ -8159,7 +8230,7 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [280]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Replace blank strings with NA in character columns</span>
@@ -8184,7 +8255,7 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [281]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Check missingness in clinical variables</span>
@@ -8240,7 +8311,7 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [282]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Missingness distribution for `tumor_stage`</span>
@@ -8278,7 +8349,7 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [283]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [14]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># categorical variables count before encoding</span>
@@ -8310,7 +8381,7 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [284]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Transform categorical variables for modeling</span>
@@ -8354,7 +8425,7 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [285]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [16]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Distribution of categorical variables</span>
@@ -8497,7 +8568,7 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [286]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Imputation is random sampling</span>
@@ -8560,7 +8631,7 @@ Observed tumor_stage distribution (post-impute):
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [287]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [18]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Fill empty "" categorical values with "Unknown" before complete-case filtering</span>
@@ -8609,7 +8680,7 @@ Observed tumor_stage distribution (post-impute):
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [288]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [19]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Quick glance at shape, types, and classes</span>
@@ -8737,7 +8808,7 @@ Observed tumor_stage distribution (post-impute):
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [289]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Check if all gene expression variables are numeric</span>
@@ -8765,7 +8836,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [290]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Looking at mean and variance of gene expression variables</span>
@@ -9932,7 +10003,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [291]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Scale gene expression variables for modeling</span>
@@ -10820,7 +10891,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [292]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Verify dimensions of scaled gene variables to ensure no data loss during scaling</span>
@@ -10884,7 +10955,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [293]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Unique values in mutation variables</span>
@@ -10942,7 +11013,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [294]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Check missingness in mutation variables</span>
@@ -10984,7 +11055,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [295]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Transform mutation variables to binary (0 = no mutation, 1 = mutation)</span>
@@ -11008,7 +11079,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [296]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Check unique values after transformation (and distribution)</span>
@@ -11059,7 +11130,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [297]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Dimensions need to be consistent across all datasets to merge</span>
@@ -11100,7 +11171,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [298]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Only processed rows</span>
@@ -11155,7 +11226,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [299]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># collapse_rare_levels</span>
@@ -11190,7 +11261,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [300]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Re-combine (standalone)</span>
@@ -11244,7 +11315,7 @@ TRUE
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [301]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Confirm niche case removal</span>
@@ -11279,7 +11350,7 @@ Breast Mixed Ductal and Lobular Carcinoma
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [302]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Number and percent of removed rows</span>
@@ -11313,7 +11384,7 @@ Breast Mixed Ductal and Lobular Carcinoma
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [303]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Final dimensions and row alignment</span>
@@ -11406,7 +11477,7 @@ Breast Mixed Ductal and Lobular Carcinoma
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [304]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="nf">sum</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">overall_survival_df</span><span class="p">))</span>
@@ -11439,7 +11510,7 @@ Breast Mixed Ductal and Lobular Carcinoma
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [305]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Confirm no leakage columns remain</span>
@@ -11476,7 +11547,7 @@ Breast Mixed Ductal and Lobular Carcinoma
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [306]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Confirm event distribution still looks reasonable</span>
@@ -11514,7 +11585,7 @@ Breast Mixed Ductal and Lobular Carcinoma
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [307]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># inspect collapsed factor levels</span>
@@ -11719,7 +11790,7 @@ Breast Mixed Ductal and Lobular Carcinoma
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [308]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
@@ -11769,36 +11840,267 @@ Breast Mixed Ductal and Lobular Carcinoma
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6abaa79c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Bagging-fit">Bagging fit<a class="anchor-link" href="#Bagging-fit">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=31c34a88">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4a41334e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [309]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<div class="highlight hl-r"><pre><span></span><span class="c1"># predictor-only validation and test sets</span>
+<span class="n">X_valid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_valid</span><span class="p">[,</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">dfc_valid</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"time"</span><span class="p">,</span><span class="w"> </span><span class="s">"event"</span><span class="p">))]</span>
+<span class="n">X_test</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_test</span><span class="p">[,</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">dfc_test</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"time"</span><span class="p">,</span><span class="w"> </span><span class="s">"event"</span><span class="p">))]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=914ac9b2">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-r"><pre><span></span><span class="c1">#  Fit a baseline bagging model</span>
 
-<span class="n">bag_model_ipred_dfc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">bagging</span><span class="p">(</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="n">bag_baseline</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">bagging</span><span class="p">(</span>
 <span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span>
 <span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dfc_train</span><span class="p">,</span>
 <span class="w">  </span><span class="n">nbagg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200</span><span class="p">,</span>
 <span class="w">  </span><span class="n">coob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
-<span class="w">  </span><span class="n">control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rpart.control</span><span class="p">(</span><span class="n">xval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">minsplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">)</span>
+<span class="w">  </span><span class="n">control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rpart.control</span><span class="p">(</span>
+<span class="w">    </span><span class="n">xval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">cp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">minsplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=92e8ac50">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-r"><pre><span></span><span class="c1"># Generate baseline predictions</span>
+
+<span class="n">baseline_valid_pred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">bag_baseline</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_valid</span><span class="p">)</span>
+<span class="n">baseline_test_pred</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">bag_baseline</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=39b0d30d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [43]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-r"><pre><span></span><span class="c1"># Evaluate baseline bagging model with Brier score and C-index</span>
+
+<span class="c1"># Brier score</span>
+<span class="n">baseline_valid_ibs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sbrier</span><span class="p">(</span>
+<span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">dfc_valid</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_valid</span><span class="o">$</span><span class="n">event</span><span class="p">),</span>
+<span class="w">  </span><span class="n">baseline_valid_pred</span>
 <span class="p">)</span>
 
-<span class="nf">print</span><span class="p">(</span><span class="n">bag_model_ipred_dfc</span><span class="p">)</span>
+<span class="n">baseline_test_ibs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sbrier</span><span class="p">(</span>
+<span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">dfc_test</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_test</span><span class="o">$</span><span class="n">event</span><span class="p">),</span>
+<span class="w">  </span><span class="n">baseline_test_pred</span>
+<span class="p">)</span>
+
+<span class="c1"># Summarize each survfit prediction into one numeric score per patient</span>
+<span class="n">valid_pred_score</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sapply</span><span class="p">(</span><span class="n">baseline_valid_pred</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">surv</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
+<span class="n">test_pred_score</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sapply</span><span class="p">(</span><span class="n">baseline_test_pred</span><span class="p">,</span><span class="w">  </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">surv</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
+
+<span class="c1"># Convert survival score to risk score</span>
+<span class="n">valid_risk</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">valid_pred_score</span>
+<span class="n">test_risk</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">test_pred_score</span>
+
+<span class="c1"># C-index</span>
+<span class="n">baseline_valid_cindex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">concordance</span><span class="p">(</span>
+<span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">dfc_valid</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_valid</span><span class="o">$</span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">valid_risk</span><span class="p">,</span>
+<span class="w">  </span><span class="n">reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span>
+<span class="p">)</span><span class="o">$</span><span class="n">concordance</span>
+
+<span class="n">baseline_test_cindex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">concordance</span><span class="p">(</span>
+<span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">dfc_test</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_test</span><span class="o">$</span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">test_risk</span><span class="p">,</span>
+<span class="w">  </span><span class="n">reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span>
+<span class="p">)</span><span class="o">$</span><span class="n">concordance</span>
+
+<span class="c1"># Results table</span>
+<span class="n">baseline_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="w">  </span><span class="n">Model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Baseline Bagging"</span><span class="p">,</span>
+<span class="w">  </span><span class="n">Validation_IBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">baseline_valid_ibs</span><span class="p">),</span>
+<span class="w">  </span><span class="n">Test_IBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">baseline_test_ibs</span><span class="p">),</span>
+<span class="w">  </span><span class="n">Validation_C_Index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">baseline_valid_cindex</span><span class="p">),</span>
+<span class="w">  </span><span class="n">Test_C_Index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">baseline_test_cindex</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">baseline_results</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<table class="dataframe">
+<caption>A data.frame: 1 × 5</caption>
+<thead>
+<tr><th scope="col">Model</th><th scope="col">Validation_IBS</th><th scope="col">Test_IBS</th><th scope="col">Validation_C_Index</th><th scope="col">Test_C_Index</th></tr>
+<tr><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+<tr><td>Baseline Bagging</td><td>0.1919867</td><td>0.1941656</td><td>0.7633457</td><td>0.7398796</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d42e3c80">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>this is a GOOD baseline</p>
+<ul>
+<li>C-index ~0.74–0.76</li>
+<li>model is correctly ranking patients most of the time</li>
+<li>solid performance for survival modeling: IBS is stable across splits</li>
+<li>No major overfitting</li>
+<li>Model is generalizing well</li>
+</ul>
+<p>The baseline bagging survival model achieved a validation C-index of 0.764 and a test C-index of 0.740, indicating strong discriminative ability in ranking patients by risk. The Brier score remained stable between validation (0.192) and test (0.194), suggesting good generalization performance and minimal overfitting.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=eb69e09d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Tuning">Tuning<a class="anchor-link" href="#Tuning">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=ef721b42">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-r"><pre><span></span><span class="c1"># using 8 models to reduce on time</span>
+
+<span class="n">bag_grid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span>
+<span class="w">  </span><span class="n">nbagg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">100</span><span class="p">,</span><span class="w"> </span><span class="m">200</span><span class="p">),</span>
+<span class="w">  </span><span class="n">cp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="m">0.001</span><span class="p">),</span>
+<span class="w">  </span><span class="n">minsplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="m">20</span><span class="p">),</span>
+<span class="w">  </span><span class="n">minbucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4338c374">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-r"><pre><span></span><span class="c1"># NOTE to Team this block takes about 10 minutes to run</span>
+<span class="n">bag_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">()</span>
+
+<span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">bag_grid</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="n">current_nbagg</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bag_grid</span><span class="o">$</span><span class="n">nbagg</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">  </span><span class="n">current_cp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bag_grid</span><span class="o">$</span><span class="n">cp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">  </span><span class="n">current_minsplit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bag_grid</span><span class="o">$</span><span class="n">minsplit</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">  </span><span class="n">current_minbucket</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bag_grid</span><span class="o">$</span><span class="n">minbucket</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nf">cat</span><span class="p">(</span>
+<span class="w">    </span><span class="s">"Fitting model"</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="s">"of"</span><span class="p">,</span><span class="w"> </span><span class="nf">nrow</span><span class="p">(</span><span class="n">bag_grid</span><span class="p">),</span>
+<span class="w">    </span><span class="s">"| nbagg ="</span><span class="p">,</span><span class="w"> </span><span class="n">current_nbagg</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"| cp ="</span><span class="p">,</span><span class="w"> </span><span class="n">current_cp</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"| minsplit ="</span><span class="p">,</span><span class="w"> </span><span class="n">current_minsplit</span><span class="p">,</span>
+<span class="w">    </span><span class="s">"| minbucket ="</span><span class="p">,</span><span class="w"> </span><span class="n">current_minbucket</span><span class="p">,</span><span class="w"> </span><span class="s">"\n"</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="n">bag_fit</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">bagging</span><span class="p">(</span>
+<span class="w">    </span><span class="nf">Surv</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span>
+<span class="w">    </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dfc_train</span><span class="p">,</span>
+<span class="w">    </span><span class="n">nbagg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_nbagg</span><span class="p">,</span>
+<span class="w">    </span><span class="n">coob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
+<span class="w">    </span><span class="n">control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rpart.control</span><span class="p">(</span>
+<span class="w">      </span><span class="n">xval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">      </span><span class="n">cp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_cp</span><span class="p">,</span>
+<span class="w">      </span><span class="n">minsplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_minsplit</span><span class="p">,</span>
+<span class="w">      </span><span class="n">minbucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_minbucket</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Validation predictions</span>
+<span class="w">  </span><span class="n">valid_pred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">bag_fit</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_valid</span><span class="p">)</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Validation IBS</span>
+<span class="w">  </span><span class="n">valid_ibs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sbrier</span><span class="p">(</span>
+<span class="w">    </span><span class="nf">Surv</span><span class="p">(</span><span class="n">dfc_valid</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_valid</span><span class="o">$</span><span class="n">event</span><span class="p">),</span>
+<span class="w">    </span><span class="n">valid_pred</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Convert survfit predictions into one numeric score per patient</span>
+<span class="w">  </span><span class="n">valid_pred_score</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sapply</span><span class="p">(</span><span class="n">valid_pred</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">surv</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
+<span class="w">  </span><span class="n">valid_risk</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">valid_pred_score</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Validation C-index</span>
+<span class="w">  </span><span class="n">valid_cindex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">concordance</span><span class="p">(</span>
+<span class="w">    </span><span class="nf">Surv</span><span class="p">(</span><span class="n">dfc_valid</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_valid</span><span class="o">$</span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">valid_risk</span><span class="p">,</span>
+<span class="w">    </span><span class="n">reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span>
+<span class="w">  </span><span class="p">)</span><span class="o">$</span><span class="n">concordance</span>
+<span class="w">  </span>
+<span class="w">  </span><span class="c1"># Store results</span>
+<span class="w">  </span><span class="n">bag_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span>
+<span class="w">    </span><span class="n">bag_results</span><span class="p">,</span>
+<span class="w">    </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="w">      </span><span class="n">nbagg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_nbagg</span><span class="p">,</span>
+<span class="w">      </span><span class="n">cp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_cp</span><span class="p">,</span>
+<span class="w">      </span><span class="n">minsplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_minsplit</span><span class="p">,</span>
+<span class="w">      </span><span class="n">minbucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">current_minbucket</span><span class="p">,</span>
+<span class="w">      </span><span class="n">Validation_IBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">valid_ibs</span><span class="p">),</span>
+<span class="w">      </span><span class="n">Validation_C_Index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="n">valid_cindex</span><span class="p">)</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </div>
@@ -11811,264 +12113,117 @@ Breast Mixed Ductal and Lobular Carcinoma
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-Bagging survival trees with 200 bootstrap replications 
-
-Call: bagging.data.frame(formula = Surv(time, event) ~ ., data = dfc_train, 
-    nbagg = 200, coob = TRUE, control = rpart.control(xval = 0, 
-        cp = 0, minsplit = 20))
-
-Out-of-bag estimate of Brier's score:  0.2186 
-
+<pre>Fitting model 1 of 8 | nbagg = 100 | cp = 0 | minsplit = 10 | minbucket = 5 
+Fitting model 2 of 8 | nbagg = 200 | cp = 0 | minsplit = 10 | minbucket = 5 
+Fitting model 3 of 8 | nbagg = 100 | cp = 0.001 | minsplit = 10 | minbucket = 5 
+Fitting model 4 of 8 | nbagg = 200 | cp = 0.001 | minsplit = 10 | minbucket = 5 
+Fitting model 5 of 8 | nbagg = 100 | cp = 0 | minsplit = 20 | minbucket = 5 
+Fitting model 6 of 8 | nbagg = 200 | cp = 0 | minsplit = 20 | minbucket = 5 
+Fitting model 7 of 8 | nbagg = 100 | cp = 0.001 | minsplit = 20 | minbucket = 5 
+Fitting model 8 of 8 | nbagg = 200 | cp = 0.001 | minsplit = 20 | minbucket = 5 
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=dc1d5e77">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=491bf09a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>Best Model
+nbagg = 200<br/>
+cp = 0.001<br/>
+minsplit = 20<br/>
+minbucket = 5<br/>
+Validation_IBS = 0.1880543<br/>
+Validation_C_Index = 0.7559235</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=570229bf">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="Final-Model">Final Model<a class="anchor-link" href="#Final-Model">¶</a></h2>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3847350c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [310]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [46]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<div class="highlight hl-r"><pre><span></span><span class="c1"># Final Model</span>
+<span class="n">dfc_train_valid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">dfc_train</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_valid</span><span class="p">)</span>
 
-<span class="n">bag_model_ipred_os</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">bagging</span><span class="p">(</span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="n">bag_final</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">bagging</span><span class="p">(</span>
 <span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">.</span><span class="p">,</span>
-<span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">os_train</span><span class="p">,</span>
+<span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dfc_train_valid</span><span class="p">,</span>
 <span class="w">  </span><span class="n">nbagg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">200</span><span class="p">,</span>
 <span class="w">  </span><span class="n">coob</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span>
-<span class="w">  </span><span class="n">control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rpart.control</span><span class="p">(</span><span class="n">xval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">cp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="n">minsplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">)</span>
+<span class="w">  </span><span class="n">control</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rpart.control</span><span class="p">(</span>
+<span class="w">    </span><span class="n">xval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="p">,</span>
+<span class="w">    </span><span class="n">cp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.001</span><span class="p">,</span>
+<span class="w">    </span><span class="n">minsplit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">,</span>
+<span class="w">    </span><span class="n">minbucket</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">5</span>
+<span class="w">  </span><span class="p">)</span>
 <span class="p">)</span>
-
-<span class="nf">print</span><span class="p">(</span><span class="n">bag_model_ipred_os</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>
-Bagging survival trees with 200 bootstrap replications 
-
-Call: bagging.data.frame(formula = Surv(time, event) ~ ., data = os_train, 
-    nbagg = 200, coob = TRUE, control = rpart.control(xval = 0, 
-        cp = 0, minsplit = 20))
-
-Out-of-bag estimate of Brier's score:  0.1105 
-
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=da64551a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Brier Score</p>
-<ul>
-<li>approx 0.10-0.15 - very strong</li>
-<li>approx 0.15-0.25 - good</li>
-<li>approx 0.25-0.35 - moderate</li>
-<li>approx greater than 0.35 -weak</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9492bb48">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Bagging-validation">Bagging validation<a class="anchor-link" href="#Bagging-validation">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8e60ffa3">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b6995e09">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [311]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [47]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="c1"># validation predictors</span>
-<span class="n">X_valid_dfc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_valid</span><span class="p">[,</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">dfc_valid</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"time"</span><span class="p">,</span><span class="w"> </span><span class="s">"event"</span><span class="p">))]</span>
+<div class="highlight hl-r"><pre><span></span><span class="n">final_test_pred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">bag_final</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_test</span><span class="p">)</span>
 
-<span class="c1"># Predict on validation set</span>
-<span class="n">valid_pred_ipred_dfc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">bag_model_ipred_dfc</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_valid_dfc</span><span class="p">)</span>
-
-<span class="c1"># Validation performance</span>
-<span class="n">valid_ibs_dfc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sbrier</span><span class="p">(</span>
-<span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">dfc_valid</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_valid</span><span class="o">$</span><span class="n">event</span><span class="p">),</span>
-<span class="w">  </span><span class="n">valid_pred_ipred_dfc</span>
-<span class="p">)</span>
-
-<span class="nf">cat</span><span class="p">(</span><span class="s">"Validation Brier Score:"</span><span class="p">,</span><span class="w"> </span><span class="n">valid_ibs_dfc</span><span class="p">,</span><span class="w"> </span><span class="s">"\n"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Validation Brier Score: 0.1919867 
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=0a2c12a5">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [312]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="c1"># validation predictors</span>
-<span class="n">X_valid_os</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">os_valid</span><span class="p">[,</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">os_valid</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"time"</span><span class="p">,</span><span class="w"> </span><span class="s">"event"</span><span class="p">))]</span>
-
-<span class="c1"># Predict on validation set</span>
-<span class="n">valid_pred_ipred_os</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">bag_model_ipred_os</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_valid_os</span><span class="p">)</span>
-
-<span class="c1"># Validation performance</span>
-<span class="n">valid_ibs_os</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sbrier</span><span class="p">(</span>
-<span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">os_valid</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">os_valid</span><span class="o">$</span><span class="n">event</span><span class="p">),</span>
-<span class="w">  </span><span class="n">valid_pred_ipred_os</span>
-<span class="p">)</span>
-
-<span class="nf">cat</span><span class="p">(</span><span class="s">"Validation Brier Score:"</span><span class="p">,</span><span class="w"> </span><span class="n">valid_ibs_os</span><span class="p">,</span><span class="w"> </span><span class="s">"\n"</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Validation Brier Score: 0.1440883 
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9f6a5b9c">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>0.19 Brier Score strong predictive accuracy</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=31fea34d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Brier scores &lt; 0.20 = very strong for survival models</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=17cfaa0a">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Bagging-test">Bagging test<a class="anchor-link" href="#Bagging-test">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=adb939c8">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [313]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="c1"># test predictors</span>
-<span class="n">X_test_dfc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_test</span><span class="p">[,</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">dfc_test</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"time"</span><span class="p">,</span><span class="w"> </span><span class="s">"event"</span><span class="p">))]</span>
-
-<span class="c1"># Predict on test set</span>
-<span class="n">test_pred_ipred_dfc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">bag_model_ipred_dfc</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_test_dfc</span><span class="p">)</span>
-
-<span class="c1"># Test performance</span>
-<span class="n">test_ibs_dfc</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sbrier</span><span class="p">(</span>
+<span class="n">final_test_ibs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sbrier</span><span class="p">(</span>
 <span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">dfc_test</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_test</span><span class="o">$</span><span class="n">event</span><span class="p">),</span>
-<span class="w">  </span><span class="n">test_pred_ipred_dfc</span>
+<span class="w">  </span><span class="n">final_test_pred</span>
 <span class="p">)</span>
 
-<span class="nf">cat</span><span class="p">(</span><span class="s">"Test Brier Score:"</span><span class="p">,</span><span class="w"> </span><span class="n">test_ibs_dfc</span><span class="p">,</span><span class="w"> </span><span class="s">"\n"</span><span class="p">)</span>
+<span class="n">final_test_score</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sapply</span><span class="p">(</span><span class="n">final_test_pred</span><span class="p">,</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">surv</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">))</span>
+<span class="n">final_test_risk</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">final_test_score</span>
+
+<span class="n">final_test_cindex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">concordance</span><span class="p">(</span>
+<span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">dfc_test</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_test</span><span class="o">$</span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">final_test_risk</span><span class="p">,</span>
+<span class="w">  </span><span class="n">reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span>
+<span class="p">)</span><span class="o">$</span><span class="n">concordance</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Test Brier Score: 0.1941656 
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=103ee0e0">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e783811a">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [341]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [48]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="c1"># test predictors</span>
-<span class="n">X_test_os</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">os_test</span><span class="p">[,</span><span class="w"> </span><span class="o">!</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">os_test</span><span class="p">)</span><span class="w"> </span><span class="o">%in%</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"time"</span><span class="p">,</span><span class="w"> </span><span class="s">"event"</span><span class="p">))]</span>
+<div class="highlight hl-r"><pre><span></span><span class="n">best_bag</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bag_results</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
 
-<span class="c1"># Predict on test set</span>
-<span class="n">test_pred_ipred_os</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">bag_model_ipred_os</span><span class="p">,</span><span class="w"> </span><span class="n">newdata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">X_test_os</span><span class="p">)</span>
-
-<span class="c1"># Test performance</span>
-<span class="n">test_ibs_os</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">sbrier</span><span class="p">(</span>
-<span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">os_test</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">os_test</span><span class="o">$</span><span class="n">event</span><span class="p">),</span>
-<span class="w">  </span><span class="n">test_pred_ipred_os</span>
-<span class="p">)</span>
-
-<span class="nf">cat</span><span class="p">(</span><span class="s">"Test Brier Score:"</span><span class="p">,</span><span class="w"> </span><span class="n">test_ibs_os</span><span class="p">,</span><span class="w"> </span><span class="s">"\n"</span><span class="p">)</span>
+<span class="n">bag_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bag_results</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">bag_results</span><span class="o">$</span><span class="n">Validation_IBS</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">bag_results</span><span class="o">$</span><span class="n">Validation_C_Index</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
+<span class="n">best_bag</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">bag_results</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+<span class="n">best_bag</span>
 </pre></div>
 </div>
 </div>
@@ -12080,21 +12235,29 @@ Out-of-bag estimate of Brier's score:  0.1105
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Test Brier Score: 0.0981013 
-</pre>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<table class="dataframe">
+<caption>A data.frame: 1 × 6</caption>
+<thead>
+<tr><th></th><th scope="col">nbagg</th><th scope="col">cp</th><th scope="col">minsplit</th><th scope="col">minbucket</th><th scope="col">Validation_IBS</th><th scope="col">Validation_C_Index</th></tr>
+<tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">8</th><td>200</td><td>0.001</td><td>20</td><td>5</td><td>0.1878158</td><td>0.7553526</td></tr>
+</tbody>
+</table>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4a027781">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9f4f618">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>shows strong predictive performance, with an out-of-bag Brier score of 0.2185  and improved performance on both validation 0.1921 and test 0.1943 datasets. the lower Brier scores on the validation and test sets indicate that the model generalizes well and does not exhibit overfitting</p>
+<p>The tuned bagging survival model achieved a lower test Integrated Brier Score (0.183) compared to the baseline model (0.194), indicating improved accuracy in predicted survival probabilities. The concordance index remained stable (0.738 vs. 0.740), suggesting that the model maintained strong discriminative ability while improving calibration.</p>
 </div>
 </div>
 </div>
@@ -12136,7 +12299,7 @@ Out-of-bag estimate of Brier's score:  0.1105
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [314]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [49]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Hyperparameter grid for tuning</span>
@@ -12155,7 +12318,7 @@ Out-of-bag estimate of Brier's score:  0.1105
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [315]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [50]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Training stage result containers</span>
@@ -12171,10 +12334,11 @@ Out-of-bag estimate of Brier's score:  0.1105
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [316]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [51]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="c1"># Fit overall survival RF candidates on training data</span>
+<div class="highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="c1"># Fit overall survival RF candidates on training data</span>
 <span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">rf_grid</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w">  </span><span class="n">current_rf_mtry</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rf_grid</span><span class="o">$</span><span class="n">mtry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -12205,12 +12369,12 @@ Out-of-bag estimate of Brier's score:  0.1105
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=3fafd678">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=ec2e45a3">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [317]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [52]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># os training OOB errors</span>
@@ -12235,67 +12399,67 @@ Out-of-bag estimate of Brier's score:  0.1105
 <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row">41</th><td> 25</td><td>20</td><td> 500</td><td>0.3182632</td></tr>
-<tr><th scope="row">57</th><td> 25</td><td>20</td><td>1000</td><td>0.3201159</td></tr>
-<tr><th scope="row">53</th><td> 25</td><td>15</td><td>1000</td><td>0.3201404</td></tr>
-<tr><th scope="row">42</th><td> 50</td><td>20</td><td> 500</td><td>0.3214325</td></tr>
-<tr><th scope="row">26</th><td> 50</td><td>20</td><td> 250</td><td>0.3219746</td></tr>
-<tr><th scope="row">39</th><td>100</td><td>15</td><td> 500</td><td>0.3220426</td></tr>
-<tr><th scope="row">38</th><td> 50</td><td>15</td><td> 500</td><td>0.3221897</td></tr>
-<tr><th scope="row">21</th><td> 25</td><td>15</td><td> 250</td><td>0.3222584</td></tr>
-<tr><th scope="row">58</th><td> 50</td><td>20</td><td>1000</td><td>0.3223922</td></tr>
-<tr><th scope="row">22</th><td> 50</td><td>15</td><td> 250</td><td>0.3224861</td></tr>
-<tr><th scope="row">50</th><td> 50</td><td>10</td><td>1000</td><td>0.3229091</td></tr>
-<tr><th scope="row">63</th><td>100</td><td>25</td><td>1000</td><td>0.3230606</td></tr>
-<tr><th scope="row">33</th><td> 25</td><td>10</td><td> 500</td><td>0.3236886</td></tr>
-<tr><th scope="row">54</th><td> 50</td><td>15</td><td>1000</td><td>0.3237354</td></tr>
-<tr><th scope="row">61</th><td> 25</td><td>25</td><td>1000</td><td>0.3237927</td></tr>
-<tr><th scope="row">47</th><td>100</td><td>25</td><td> 500</td><td>0.3239125</td></tr>
-<tr><th scope="row">34</th><td> 50</td><td>10</td><td> 500</td><td>0.3239148</td></tr>
-<tr><th scope="row">45</th><td> 25</td><td>25</td><td> 500</td><td>0.3239196</td></tr>
-<tr><th scope="row">18</th><td> 50</td><td>10</td><td> 250</td><td>0.3239209</td></tr>
-<tr><th scope="row">37</th><td> 25</td><td>15</td><td> 500</td><td>0.3240450</td></tr>
-<tr><th scope="row">62</th><td> 50</td><td>25</td><td>1000</td><td>0.3248999</td></tr>
-<tr><th scope="row">49</th><td> 25</td><td>10</td><td>1000</td><td>0.3251932</td></tr>
-<tr><th scope="row">10</th><td> 50</td><td>20</td><td> 125</td><td>0.3253040</td></tr>
-<tr><th scope="row">46</th><td> 50</td><td>25</td><td> 500</td><td>0.3255877</td></tr>
-<tr><th scope="row">43</th><td>100</td><td>20</td><td> 500</td><td>0.3257912</td></tr>
-<tr><th scope="row">29</th><td> 25</td><td>25</td><td> 250</td><td>0.3258471</td></tr>
-<tr><th scope="row">59</th><td>100</td><td>20</td><td>1000</td><td>0.3260328</td></tr>
-<tr><th scope="row">35</th><td>100</td><td>10</td><td> 500</td><td>0.3260955</td></tr>
-<tr><th scope="row">55</th><td>100</td><td>15</td><td>1000</td><td>0.3261714</td></tr>
-<tr><th scope="row">51</th><td>100</td><td>10</td><td>1000</td><td>0.3271657</td></tr>
+<tr><th scope="row">58</th><td> 50</td><td>20</td><td>1000</td><td>0.3197499</td></tr>
+<tr><th scope="row">54</th><td> 50</td><td>15</td><td>1000</td><td>0.3204660</td></tr>
+<tr><th scope="row">61</th><td> 25</td><td>25</td><td>1000</td><td>0.3219484</td></tr>
+<tr><th scope="row">50</th><td> 50</td><td>10</td><td>1000</td><td>0.3220041</td></tr>
+<tr><th scope="row">57</th><td> 25</td><td>20</td><td>1000</td><td>0.3225277</td></tr>
+<tr><th scope="row">38</th><td> 50</td><td>15</td><td> 500</td><td>0.3225538</td></tr>
+<tr><th scope="row">17</th><td> 25</td><td>10</td><td> 250</td><td>0.3226527</td></tr>
+<tr><th scope="row">42</th><td> 50</td><td>20</td><td> 500</td><td>0.3227726</td></tr>
+<tr><th scope="row">26</th><td> 50</td><td>20</td><td> 250</td><td>0.3229381</td></tr>
+<tr><th scope="row">59</th><td>100</td><td>20</td><td>1000</td><td>0.3232196</td></tr>
+<tr><th scope="row">41</th><td> 25</td><td>20</td><td> 500</td><td>0.3232200</td></tr>
+<tr><th scope="row">37</th><td> 25</td><td>15</td><td> 500</td><td>0.3232556</td></tr>
+<tr><th scope="row">47</th><td>100</td><td>25</td><td> 500</td><td>0.3233579</td></tr>
+<tr><th scope="row">34</th><td> 50</td><td>10</td><td> 500</td><td>0.3233914</td></tr>
+<tr><th scope="row">25</th><td> 25</td><td>20</td><td> 250</td><td>0.3238395</td></tr>
+<tr><th scope="row">62</th><td> 50</td><td>25</td><td>1000</td><td>0.3239025</td></tr>
+<tr><th scope="row">53</th><td> 25</td><td>15</td><td>1000</td><td>0.3240543</td></tr>
+<tr><th scope="row">51</th><td>100</td><td>10</td><td>1000</td><td>0.3241718</td></tr>
+<tr><th scope="row">22</th><td> 50</td><td>15</td><td> 250</td><td>0.3243648</td></tr>
+<tr><th scope="row">46</th><td> 50</td><td>25</td><td> 500</td><td>0.3243869</td></tr>
+<tr><th scope="row">33</th><td> 25</td><td>10</td><td> 500</td><td>0.3245013</td></tr>
+<tr><th scope="row">18</th><td> 50</td><td>10</td><td> 250</td><td>0.3246610</td></tr>
+<tr><th scope="row">49</th><td> 25</td><td>10</td><td>1000</td><td>0.3248755</td></tr>
+<tr><th scope="row">43</th><td>100</td><td>20</td><td> 500</td><td>0.3251338</td></tr>
+<tr><th scope="row">31</th><td>100</td><td>25</td><td> 250</td><td>0.3256496</td></tr>
+<tr><th scope="row">39</th><td>100</td><td>15</td><td> 500</td><td>0.3257830</td></tr>
+<tr><th scope="row">6</th><td> 50</td><td>15</td><td> 125</td><td>0.3259832</td></tr>
+<tr><th scope="row">63</th><td>100</td><td>25</td><td>1000</td><td>0.3260370</td></tr>
+<tr><th scope="row">45</th><td> 25</td><td>25</td><td> 500</td><td>0.3263206</td></tr>
+<tr><th scope="row">27</th><td>100</td><td>20</td><td> 250</td><td>0.3266488</td></tr>
 <tr><th scope="row">⋮</th><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
-<tr><th scope="row">12</th><td>200</td><td>20</td><td> 125</td><td>0.3287213</td></tr>
-<tr><th scope="row">19</th><td>100</td><td>10</td><td> 250</td><td>0.3287445</td></tr>
-<tr><th scope="row">48</th><td>200</td><td>25</td><td> 500</td><td>0.3290806</td></tr>
-<tr><th scope="row">25</th><td> 25</td><td>20</td><td> 250</td><td>0.3295517</td></tr>
-<tr><th scope="row">31</th><td>100</td><td>25</td><td> 250</td><td>0.3296487</td></tr>
-<tr><th scope="row">9</th><td> 25</td><td>20</td><td> 125</td><td>0.3297778</td></tr>
-<tr><th scope="row">6</th><td> 50</td><td>15</td><td> 125</td><td>0.3308207</td></tr>
-<tr><th scope="row">27</th><td>100</td><td>20</td><td> 250</td><td>0.3311539</td></tr>
-<tr><th scope="row">60</th><td>200</td><td>20</td><td>1000</td><td>0.3314668</td></tr>
-<tr><th scope="row">44</th><td>200</td><td>20</td><td> 500</td><td>0.3315157</td></tr>
-<tr><th scope="row">64</th><td>200</td><td>25</td><td>1000</td><td>0.3322625</td></tr>
-<tr><th scope="row">14</th><td> 50</td><td>25</td><td> 125</td><td>0.3323188</td></tr>
-<tr><th scope="row">40</th><td>200</td><td>15</td><td> 500</td><td>0.3326188</td></tr>
-<tr><th scope="row">32</th><td>200</td><td>25</td><td> 250</td><td>0.3326675</td></tr>
-<tr><th scope="row">15</th><td>100</td><td>25</td><td> 125</td><td>0.3331697</td></tr>
-<tr><th scope="row">24</th><td>200</td><td>15</td><td> 250</td><td>0.3332023</td></tr>
-<tr><th scope="row">56</th><td>200</td><td>15</td><td>1000</td><td>0.3336172</td></tr>
-<tr><th scope="row">52</th><td>200</td><td>10</td><td>1000</td><td>0.3343040</td></tr>
-<tr><th scope="row">36</th><td>200</td><td>10</td><td> 500</td><td>0.3345017</td></tr>
-<tr><th scope="row">20</th><td>200</td><td>10</td><td> 250</td><td>0.3347666</td></tr>
-<tr><th scope="row">11</th><td>100</td><td>20</td><td> 125</td><td>0.3352909</td></tr>
-<tr><th scope="row">7</th><td>100</td><td>15</td><td> 125</td><td>0.3355896</td></tr>
-<tr><th scope="row">28</th><td>200</td><td>20</td><td> 250</td><td>0.3371394</td></tr>
-<tr><th scope="row">13</th><td> 25</td><td>25</td><td> 125</td><td>0.3372024</td></tr>
-<tr><th scope="row">1</th><td> 25</td><td>10</td><td> 125</td><td>0.3386803</td></tr>
-<tr><th scope="row">5</th><td> 25</td><td>15</td><td> 125</td><td>0.3388829</td></tr>
-<tr><th scope="row">3</th><td>100</td><td>10</td><td> 125</td><td>0.3412573</td></tr>
-<tr><th scope="row">4</th><td>200</td><td>10</td><td> 125</td><td>0.3415903</td></tr>
-<tr><th scope="row">8</th><td>200</td><td>15</td><td> 125</td><td>0.3421627</td></tr>
-<tr><th scope="row">16</th><td>200</td><td>25</td><td> 125</td><td>0.3432899</td></tr>
+<tr><th scope="row">48</th><td>200</td><td>25</td><td> 500</td><td>0.3287637</td></tr>
+<tr><th scope="row">30</th><td> 50</td><td>25</td><td> 250</td><td>0.3289123</td></tr>
+<tr><th scope="row">64</th><td>200</td><td>25</td><td>1000</td><td>0.3292320</td></tr>
+<tr><th scope="row">29</th><td> 25</td><td>25</td><td> 250</td><td>0.3293666</td></tr>
+<tr><th scope="row">60</th><td>200</td><td>20</td><td>1000</td><td>0.3294910</td></tr>
+<tr><th scope="row">19</th><td>100</td><td>10</td><td> 250</td><td>0.3301775</td></tr>
+<tr><th scope="row">11</th><td>100</td><td>20</td><td> 125</td><td>0.3303988</td></tr>
+<tr><th scope="row">32</th><td>200</td><td>25</td><td> 250</td><td>0.3306067</td></tr>
+<tr><th scope="row">9</th><td> 25</td><td>20</td><td> 125</td><td>0.3308437</td></tr>
+<tr><th scope="row">28</th><td>200</td><td>20</td><td> 250</td><td>0.3311945</td></tr>
+<tr><th scope="row">7</th><td>100</td><td>15</td><td> 125</td><td>0.3315435</td></tr>
+<tr><th scope="row">40</th><td>200</td><td>15</td><td> 500</td><td>0.3315635</td></tr>
+<tr><th scope="row">15</th><td>100</td><td>25</td><td> 125</td><td>0.3327226</td></tr>
+<tr><th scope="row">21</th><td> 25</td><td>15</td><td> 250</td><td>0.3330516</td></tr>
+<tr><th scope="row">5</th><td> 25</td><td>15</td><td> 125</td><td>0.3331715</td></tr>
+<tr><th scope="row">14</th><td> 50</td><td>25</td><td> 125</td><td>0.3331798</td></tr>
+<tr><th scope="row">56</th><td>200</td><td>15</td><td>1000</td><td>0.3334366</td></tr>
+<tr><th scope="row">1</th><td> 25</td><td>10</td><td> 125</td><td>0.3334746</td></tr>
+<tr><th scope="row">44</th><td>200</td><td>20</td><td> 500</td><td>0.3337860</td></tr>
+<tr><th scope="row">36</th><td>200</td><td>10</td><td> 500</td><td>0.3339939</td></tr>
+<tr><th scope="row">52</th><td>200</td><td>10</td><td>1000</td><td>0.3346740</td></tr>
+<tr><th scope="row">12</th><td>200</td><td>20</td><td> 125</td><td>0.3346758</td></tr>
+<tr><th scope="row">2</th><td> 50</td><td>10</td><td> 125</td><td>0.3356869</td></tr>
+<tr><th scope="row">3</th><td>100</td><td>10</td><td> 125</td><td>0.3359414</td></tr>
+<tr><th scope="row">4</th><td>200</td><td>10</td><td> 125</td><td>0.3367715</td></tr>
+<tr><th scope="row">20</th><td>200</td><td>10</td><td> 250</td><td>0.3368713</td></tr>
+<tr><th scope="row">24</th><td>200</td><td>15</td><td> 250</td><td>0.3370542</td></tr>
+<tr><th scope="row">13</th><td> 25</td><td>25</td><td> 125</td><td>0.3378355</td></tr>
+<tr><th scope="row">16</th><td>200</td><td>25</td><td> 125</td><td>0.3400400</td></tr>
+<tr><th scope="row">8</th><td>200</td><td>15</td><td> 125</td><td>0.3402109</td></tr>
 </tbody>
 </table>
 </div>
@@ -12307,10 +12471,11 @@ Out-of-bag estimate of Brier's score:  0.1105
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [318]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [53]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="c1"># Fit death from cancer RF candidates on training data</span>
+<div class="highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="c1"># Fit death from cancer RF candidates on training data</span>
 <span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">rf_grid</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w"> </span><span class="n">current_rf_mtry</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">rf_grid</span><span class="o">$</span><span class="n">mtry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -12341,12 +12506,12 @@ Out-of-bag estimate of Brier's score:  0.1105
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=05db444f">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1bdf22be">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [319]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [54]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># dfc Training OOB errors</span>
@@ -12371,67 +12536,67 @@ Out-of-bag estimate of Brier's score:  0.1105
 <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row">59</th><td>100</td><td>20</td><td>1000</td><td>0.2947683</td></tr>
-<tr><th scope="row">7</th><td>100</td><td>15</td><td> 125</td><td>0.2951263</td></tr>
-<tr><th scope="row">54</th><td> 50</td><td>15</td><td>1000</td><td>0.2952613</td></tr>
-<tr><th scope="row">47</th><td>100</td><td>25</td><td> 500</td><td>0.2958073</td></tr>
-<tr><th scope="row">55</th><td>100</td><td>15</td><td>1000</td><td>0.2959444</td></tr>
-<tr><th scope="row">38</th><td> 50</td><td>15</td><td> 500</td><td>0.2976170</td></tr>
-<tr><th scope="row">23</th><td>100</td><td>15</td><td> 250</td><td>0.2982702</td></tr>
-<tr><th scope="row">35</th><td>100</td><td>10</td><td> 500</td><td>0.2989996</td></tr>
-<tr><th scope="row">42</th><td> 50</td><td>20</td><td> 500</td><td>0.2996515</td></tr>
-<tr><th scope="row">16</th><td>200</td><td>25</td><td> 125</td><td>0.2997063</td></tr>
-<tr><th scope="row">51</th><td>100</td><td>10</td><td>1000</td><td>0.3001181</td></tr>
-<tr><th scope="row">50</th><td> 50</td><td>10</td><td>1000</td><td>0.3003321</td></tr>
-<tr><th scope="row">64</th><td>200</td><td>25</td><td>1000</td><td>0.3004694</td></tr>
-<tr><th scope="row">27</th><td>100</td><td>20</td><td> 250</td><td>0.3005936</td></tr>
-<tr><th scope="row">63</th><td>100</td><td>25</td><td>1000</td><td>0.3007330</td></tr>
-<tr><th scope="row">56</th><td>200</td><td>15</td><td>1000</td><td>0.3008513</td></tr>
-<tr><th scope="row">52</th><td>200</td><td>10</td><td>1000</td><td>0.3011456</td></tr>
-<tr><th scope="row">12</th><td>200</td><td>20</td><td> 125</td><td>0.3012109</td></tr>
-<tr><th scope="row">3</th><td>100</td><td>10</td><td> 125</td><td>0.3012801</td></tr>
-<tr><th scope="row">36</th><td>200</td><td>10</td><td> 500</td><td>0.3014625</td></tr>
-<tr><th scope="row">43</th><td>100</td><td>20</td><td> 500</td><td>0.3017126</td></tr>
-<tr><th scope="row">34</th><td> 50</td><td>10</td><td> 500</td><td>0.3018679</td></tr>
-<tr><th scope="row">62</th><td> 50</td><td>25</td><td>1000</td><td>0.3022410</td></tr>
-<tr><th scope="row">46</th><td> 50</td><td>25</td><td> 500</td><td>0.3023592</td></tr>
-<tr><th scope="row">19</th><td>100</td><td>10</td><td> 250</td><td>0.3025861</td></tr>
-<tr><th scope="row">58</th><td> 50</td><td>20</td><td>1000</td><td>0.3031789</td></tr>
-<tr><th scope="row">40</th><td>200</td><td>15</td><td> 500</td><td>0.3031847</td></tr>
-<tr><th scope="row">61</th><td> 25</td><td>25</td><td>1000</td><td>0.3036677</td></tr>
-<tr><th scope="row">28</th><td>200</td><td>20</td><td> 250</td><td>0.3038486</td></tr>
-<tr><th scope="row">2</th><td> 50</td><td>10</td><td> 125</td><td>0.3042314</td></tr>
+<tr><th scope="row">62</th><td> 50</td><td>25</td><td>1000</td><td>0.2933309</td></tr>
+<tr><th scope="row">46</th><td> 50</td><td>25</td><td> 500</td><td>0.2937252</td></tr>
+<tr><th scope="row">55</th><td>100</td><td>15</td><td>1000</td><td>0.2952753</td></tr>
+<tr><th scope="row">63</th><td>100</td><td>25</td><td>1000</td><td>0.2969855</td></tr>
+<tr><th scope="row">40</th><td>200</td><td>15</td><td> 500</td><td>0.2974451</td></tr>
+<tr><th scope="row">54</th><td> 50</td><td>15</td><td>1000</td><td>0.2978186</td></tr>
+<tr><th scope="row">7</th><td>100</td><td>15</td><td> 125</td><td>0.2980121</td></tr>
+<tr><th scope="row">48</th><td>200</td><td>25</td><td> 500</td><td>0.2981239</td></tr>
+<tr><th scope="row">47</th><td>100</td><td>25</td><td> 500</td><td>0.2985335</td></tr>
+<tr><th scope="row">10</th><td> 50</td><td>20</td><td> 125</td><td>0.2995638</td></tr>
+<tr><th scope="row">58</th><td> 50</td><td>20</td><td>1000</td><td>0.3000265</td></tr>
+<tr><th scope="row">50</th><td> 50</td><td>10</td><td>1000</td><td>0.3000703</td></tr>
+<tr><th scope="row">38</th><td> 50</td><td>15</td><td> 500</td><td>0.3001265</td></tr>
+<tr><th scope="row">43</th><td>100</td><td>20</td><td> 500</td><td>0.3002860</td></tr>
+<tr><th scope="row">59</th><td>100</td><td>20</td><td>1000</td><td>0.3005021</td></tr>
+<tr><th scope="row">11</th><td>100</td><td>20</td><td> 125</td><td>0.3011031</td></tr>
+<tr><th scope="row">36</th><td>200</td><td>10</td><td> 500</td><td>0.3018053</td></tr>
+<tr><th scope="row">44</th><td>200</td><td>20</td><td> 500</td><td>0.3021158</td></tr>
+<tr><th scope="row">51</th><td>100</td><td>10</td><td>1000</td><td>0.3022630</td></tr>
+<tr><th scope="row">31</th><td>100</td><td>25</td><td> 250</td><td>0.3022708</td></tr>
+<tr><th scope="row">56</th><td>200</td><td>15</td><td>1000</td><td>0.3029858</td></tr>
+<tr><th scope="row">64</th><td>200</td><td>25</td><td>1000</td><td>0.3029923</td></tr>
+<tr><th scope="row">35</th><td>100</td><td>10</td><td> 500</td><td>0.3031695</td></tr>
+<tr><th scope="row">37</th><td> 25</td><td>15</td><td> 500</td><td>0.3032458</td></tr>
+<tr><th scope="row">26</th><td> 50</td><td>20</td><td> 250</td><td>0.3032682</td></tr>
+<tr><th scope="row">19</th><td>100</td><td>10</td><td> 250</td><td>0.3033286</td></tr>
+<tr><th scope="row">4</th><td>200</td><td>10</td><td> 125</td><td>0.3038029</td></tr>
+<tr><th scope="row">22</th><td> 50</td><td>15</td><td> 250</td><td>0.3038503</td></tr>
+<tr><th scope="row">49</th><td> 25</td><td>10</td><td>1000</td><td>0.3039411</td></tr>
+<tr><th scope="row">17</th><td> 25</td><td>10</td><td> 250</td><td>0.3044305</td></tr>
 <tr><th scope="row">⋮</th><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
-<tr><th scope="row">44</th><td>200</td><td>20</td><td> 500</td><td>0.3061194</td></tr>
-<tr><th scope="row">48</th><td>200</td><td>25</td><td> 500</td><td>0.3061883</td></tr>
-<tr><th scope="row">49</th><td> 25</td><td>10</td><td>1000</td><td>0.3064274</td></tr>
-<tr><th scope="row">53</th><td> 25</td><td>15</td><td>1000</td><td>0.3064710</td></tr>
-<tr><th scope="row">14</th><td> 50</td><td>25</td><td> 125</td><td>0.3070390</td></tr>
-<tr><th scope="row">45</th><td> 25</td><td>25</td><td> 500</td><td>0.3071877</td></tr>
-<tr><th scope="row">29</th><td> 25</td><td>25</td><td> 250</td><td>0.3079740</td></tr>
-<tr><th scope="row">6</th><td> 50</td><td>15</td><td> 125</td><td>0.3080740</td></tr>
-<tr><th scope="row">25</th><td> 25</td><td>20</td><td> 250</td><td>0.3081960</td></tr>
-<tr><th scope="row">30</th><td> 50</td><td>25</td><td> 250</td><td>0.3090343</td></tr>
-<tr><th scope="row">17</th><td> 25</td><td>10</td><td> 250</td><td>0.3094318</td></tr>
-<tr><th scope="row">8</th><td>200</td><td>15</td><td> 125</td><td>0.3098975</td></tr>
-<tr><th scope="row">20</th><td>200</td><td>10</td><td> 250</td><td>0.3100050</td></tr>
-<tr><th scope="row">33</th><td> 25</td><td>10</td><td> 500</td><td>0.3101729</td></tr>
-<tr><th scope="row">21</th><td> 25</td><td>15</td><td> 250</td><td>0.3101797</td></tr>
-<tr><th scope="row">10</th><td> 50</td><td>20</td><td> 125</td><td>0.3103959</td></tr>
-<tr><th scope="row">5</th><td> 25</td><td>15</td><td> 125</td><td>0.3105649</td></tr>
-<tr><th scope="row">22</th><td> 50</td><td>15</td><td> 250</td><td>0.3108401</td></tr>
-<tr><th scope="row">32</th><td>200</td><td>25</td><td> 250</td><td>0.3114113</td></tr>
-<tr><th scope="row">57</th><td> 25</td><td>20</td><td>1000</td><td>0.3118177</td></tr>
-<tr><th scope="row">26</th><td> 50</td><td>20</td><td> 250</td><td>0.3122367</td></tr>
-<tr><th scope="row">18</th><td> 50</td><td>10</td><td> 250</td><td>0.3124956</td></tr>
-<tr><th scope="row">31</th><td>100</td><td>25</td><td> 250</td><td>0.3128096</td></tr>
-<tr><th scope="row">4</th><td>200</td><td>10</td><td> 125</td><td>0.3155095</td></tr>
-<tr><th scope="row">15</th><td>100</td><td>25</td><td> 125</td><td>0.3157096</td></tr>
-<tr><th scope="row">11</th><td>100</td><td>20</td><td> 125</td><td>0.3166336</td></tr>
-<tr><th scope="row">1</th><td> 25</td><td>10</td><td> 125</td><td>0.3168077</td></tr>
-<tr><th scope="row">37</th><td> 25</td><td>15</td><td> 500</td><td>0.3192875</td></tr>
-<tr><th scope="row">9</th><td> 25</td><td>20</td><td> 125</td><td>0.3230323</td></tr>
-<tr><th scope="row">13</th><td> 25</td><td>25</td><td> 125</td><td>0.3246433</td></tr>
+<tr><th scope="row">3</th><td>100</td><td>10</td><td> 125</td><td>0.3054843</td></tr>
+<tr><th scope="row">16</th><td>200</td><td>25</td><td> 125</td><td>0.3056565</td></tr>
+<tr><th scope="row">61</th><td> 25</td><td>25</td><td>1000</td><td>0.3057082</td></tr>
+<tr><th scope="row">29</th><td> 25</td><td>25</td><td> 250</td><td>0.3059093</td></tr>
+<tr><th scope="row">32</th><td>200</td><td>25</td><td> 250</td><td>0.3060885</td></tr>
+<tr><th scope="row">24</th><td>200</td><td>15</td><td> 250</td><td>0.3063300</td></tr>
+<tr><th scope="row">2</th><td> 50</td><td>10</td><td> 125</td><td>0.3064166</td></tr>
+<tr><th scope="row">27</th><td>100</td><td>20</td><td> 250</td><td>0.3064205</td></tr>
+<tr><th scope="row">33</th><td> 25</td><td>10</td><td> 500</td><td>0.3068081</td></tr>
+<tr><th scope="row">20</th><td>200</td><td>10</td><td> 250</td><td>0.3069794</td></tr>
+<tr><th scope="row">25</th><td> 25</td><td>20</td><td> 250</td><td>0.3072617</td></tr>
+<tr><th scope="row">42</th><td> 50</td><td>20</td><td> 500</td><td>0.3074007</td></tr>
+<tr><th scope="row">52</th><td>200</td><td>10</td><td>1000</td><td>0.3075655</td></tr>
+<tr><th scope="row">45</th><td> 25</td><td>25</td><td> 500</td><td>0.3083981</td></tr>
+<tr><th scope="row">15</th><td>100</td><td>25</td><td> 125</td><td>0.3086758</td></tr>
+<tr><th scope="row">18</th><td> 50</td><td>10</td><td> 250</td><td>0.3087830</td></tr>
+<tr><th scope="row">41</th><td> 25</td><td>20</td><td> 500</td><td>0.3092456</td></tr>
+<tr><th scope="row">21</th><td> 25</td><td>15</td><td> 250</td><td>0.3108480</td></tr>
+<tr><th scope="row">28</th><td>200</td><td>20</td><td> 250</td><td>0.3113918</td></tr>
+<tr><th scope="row">30</th><td> 50</td><td>25</td><td> 250</td><td>0.3130808</td></tr>
+<tr><th scope="row">9</th><td> 25</td><td>20</td><td> 125</td><td>0.3134389</td></tr>
+<tr><th scope="row">14</th><td> 50</td><td>25</td><td> 125</td><td>0.3140939</td></tr>
+<tr><th scope="row">8</th><td>200</td><td>15</td><td> 125</td><td>0.3154483</td></tr>
+<tr><th scope="row">34</th><td> 50</td><td>10</td><td> 500</td><td>0.3158250</td></tr>
+<tr><th scope="row">13</th><td> 25</td><td>25</td><td> 125</td><td>0.3167146</td></tr>
+<tr><th scope="row">23</th><td>100</td><td>15</td><td> 250</td><td>0.3170099</td></tr>
+<tr><th scope="row">1</th><td> 25</td><td>10</td><td> 125</td><td>0.3285070</td></tr>
+<tr><th scope="row">12</th><td>200</td><td>20</td><td> 125</td><td>0.3290876</td></tr>
+<tr><th scope="row">6</th><td> 50</td><td>15</td><td> 125</td><td>0.3346164</td></tr>
+<tr><th scope="row">5</th><td> 25</td><td>15</td><td> 125</td><td>0.3452554</td></tr>
 </tbody>
 </table>
 </div>
@@ -12454,10 +12619,11 @@ Out-of-bag estimate of Brier's score:  0.1105
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [320]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [55]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="c1"># Keep the top 3 candidates from training stage for validation testing</span>
+<div class="highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="c1"># Keep the top 3 candidates from training stage for validation testing</span>
 <span class="n">os_rf_top3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">os_rf_train_results</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
 <span class="n">dfc_rf_top3</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_rf_train_results</span><span class="p">[</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
 
@@ -12482,9 +12648,9 @@ Out-of-bag estimate of Brier's score:  0.1105
 <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row">41</th><td>25</td><td>20</td><td> 500</td><td>0.3182632</td></tr>
-<tr><th scope="row">57</th><td>25</td><td>20</td><td>1000</td><td>0.3201159</td></tr>
-<tr><th scope="row">53</th><td>25</td><td>15</td><td>1000</td><td>0.3201404</td></tr>
+<tr><th scope="row">58</th><td>50</td><td>20</td><td>1000</td><td>0.3197499</td></tr>
+<tr><th scope="row">54</th><td>50</td><td>15</td><td>1000</td><td>0.3204660</td></tr>
+<tr><th scope="row">61</th><td>25</td><td>25</td><td>1000</td><td>0.3219484</td></tr>
 </tbody>
 </table>
 </div>
@@ -12499,9 +12665,9 @@ Out-of-bag estimate of Brier's score:  0.1105
 <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row">59</th><td>100</td><td>20</td><td>1000</td><td>0.2947683</td></tr>
-<tr><th scope="row">7</th><td>100</td><td>15</td><td> 125</td><td>0.2951263</td></tr>
-<tr><th scope="row">54</th><td> 50</td><td>15</td><td>1000</td><td>0.2952613</td></tr>
+<tr><th scope="row">62</th><td> 50</td><td>25</td><td>1000</td><td>0.2933309</td></tr>
+<tr><th scope="row">46</th><td> 50</td><td>25</td><td> 500</td><td>0.2937252</td></tr>
+<tr><th scope="row">55</th><td>100</td><td>15</td><td>1000</td><td>0.2952753</td></tr>
 </tbody>
 </table>
 </div>
@@ -12524,7 +12690,7 @@ Out-of-bag estimate of Brier's score:  0.1105
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [321]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [56]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Validation stage result containers</span>
@@ -12535,15 +12701,16 @@ Out-of-bag estimate of Brier's score:  0.1105
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3cb988b1">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=f048ee34">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [322]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [57]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="c1"># Fit top overall survival candidates on train, and evaluate on validation</span>
+<div class="highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="c1"># Fit top overall survival candidates on train, and evaluate on validation</span>
 <span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">os_rf_top3</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w"> </span><span class="n">current_rf_mtry</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">os_rf_top3</span><span class="o">$</span><span class="n">mtry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -12581,12 +12748,12 @@ Out-of-bag estimate of Brier's score:  0.1105
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=08f07b18">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=8b5b2ccb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [323]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [58]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># os validation errors</span>
@@ -12611,24 +12778,25 @@ Out-of-bag estimate of Brier's score:  0.1105
 <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row">2</th><td>25</td><td>20</td><td>1000</td><td>0.3246509</td><td>0.3846385</td></tr>
-<tr><th scope="row">3</th><td>25</td><td>15</td><td>1000</td><td>0.3246089</td><td>0.3881880</td></tr>
-<tr><th scope="row">1</th><td>25</td><td>20</td><td> 500</td><td>0.3260437</td><td>0.3978731</td></tr>
+<tr><th scope="row">1</th><td>50</td><td>20</td><td>1000</td><td>0.3232445</td><td>0.3845247</td></tr>
+<tr><th scope="row">3</th><td>25</td><td>25</td><td>1000</td><td>0.3224914</td><td>0.3855609</td></tr>
+<tr><th scope="row">2</th><td>50</td><td>15</td><td>1000</td><td>0.3219652</td><td>0.3940416</td></tr>
 </tbody>
 </table>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=4b5d2c9e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2842442e">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [324]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [59]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="c1"># Fit top death from cancer candidates on train, and evaluate on validation</span>
+<div class="highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="c1"># Fit top death from cancer candidates on train, and evaluate on validation</span>
 <span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dfc_rf_top3</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
 
 <span class="w"> </span><span class="n">current_rf_mtry</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_rf_top3</span><span class="o">$</span><span class="n">mtry</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
@@ -12666,12 +12834,12 @@ Out-of-bag estimate of Brier's score:  0.1105
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4fb02b0c">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5ababe72">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [325]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [60]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># dfc validation errors</span>
@@ -12696,9 +12864,9 @@ Out-of-bag estimate of Brier's score:  0.1105
 <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row">1</th><td>100</td><td>20</td><td>1000</td><td>0.3008632</td><td>0.3046064</td></tr>
-<tr><th scope="row">2</th><td>100</td><td>15</td><td> 125</td><td>0.3044720</td><td>0.3081135</td></tr>
-<tr><th scope="row">3</th><td> 50</td><td>15</td><td>1000</td><td>0.2956353</td><td>0.3190565</td></tr>
+<tr><th scope="row">2</th><td> 50</td><td>25</td><td> 500</td><td>0.3049937</td><td>0.3114933</td></tr>
+<tr><th scope="row">3</th><td>100</td><td>15</td><td>1000</td><td>0.3002040</td><td>0.3118895</td></tr>
+<tr><th scope="row">1</th><td> 50</td><td>25</td><td>1000</td><td>0.2959435</td><td>0.3199619</td></tr>
 </tbody>
 </table>
 </div>
@@ -12721,7 +12889,7 @@ Out-of-bag estimate of Brier's score:  0.1105
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [326]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [61]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Re-combine train and validation sets for final model fit</span>
@@ -12737,13 +12905,15 @@ Out-of-bag estimate of Brier's score:  0.1105
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [327]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [62]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Best overall survival hyperparameters from validation stage</span>
 <span class="n">best_os_rf_mtry</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">os_rf_valid_results</span><span class="o">$</span><span class="n">mtry</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
 <span class="n">best_os_rf_nodesize</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">os_rf_valid_results</span><span class="o">$</span><span class="n">nodesize</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
 <span class="n">best_os_rf_ntree</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">os_rf_valid_results</span><span class="o">$</span><span class="n">ntree</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+
+<span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 
 <span class="c1"># Final overall survival random survival forest</span>
 <span class="n">os_rf_final</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rfsrc</span><span class="p">(</span>
@@ -12772,8 +12942,8 @@ Out-of-bag estimate of Brier's score:  0.1105
                     Number of deaths: 665
                      Number of trees: 1000
            Forest terminal node size: 20
-       Average no. of terminal nodes: 89.784
-No. of variables tried at each split: 25
+       Average no. of terminal nodes: 112.4
+No. of variables tried at each split: 50
               Total no. of variables: 686
        Resampling used to grow trees: swor
     Resample size used to grow trees: 1007
@@ -12781,9 +12951,9 @@ No. of variables tried at each split: 25
                               Family: surv
                       Splitting rule: logrank *random*
        Number of random split points: 10
-                          (OOB) CRPS: 36.45969993
-             (OOB) standardized CRPS: 0.10817832
-   (OOB) Requested performance error: 0.32996196
+                          (OOB) CRPS: 36.3939864
+             (OOB) standardized CRPS: 0.10798334
+   (OOB) Requested performance error: 0.32888486
 </pre>
 </div>
 </div>
@@ -12794,13 +12964,15 @@ No. of variables tried at each split: 25
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [328]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [63]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Best death from cancer hyperparameters from validation stage</span>
 <span class="n">best_dfc_rf_mtry</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_rf_valid_results</span><span class="o">$</span><span class="n">mtry</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
 <span class="n">best_dfc_rf_nodesize</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_rf_valid_results</span><span class="o">$</span><span class="n">nodesize</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
 <span class="n">best_dfc_rf_ntree</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_rf_valid_results</span><span class="o">$</span><span class="n">ntree</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+
+<span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 
 <span class="c1"># Final death from cancer random survival forest</span>
 <span class="n">dfc_rf_final</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rfsrc</span><span class="p">(</span>
@@ -12827,10 +12999,10 @@ No. of variables tried at each split: 25
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>                         Sample size: 1593
                     Number of deaths: 533
-                     Number of trees: 1000
-           Forest terminal node size: 20
-       Average no. of terminal nodes: 140.486
-No. of variables tried at each split: 100
+                     Number of trees: 500
+           Forest terminal node size: 25
+       Average no. of terminal nodes: 92.242
+No. of variables tried at each split: 50
               Total no. of variables: 686
        Resampling used to grow trees: swor
     Resample size used to grow trees: 1007
@@ -12838,9 +13010,9 @@ No. of variables tried at each split: 100
                               Family: surv
                       Splitting rule: logrank *random*
        Number of random split points: 10
-                          (OOB) CRPS: 60.35328027
-             (OOB) standardized CRPS: 0.17976553
-   (OOB) Requested performance error: 0.29279356
+                          (OOB) CRPS: 59.79848778
+             (OOB) standardized CRPS: 0.17811305
+   (OOB) Requested performance error: 0.29195683
 </pre>
 </div>
 </div>
@@ -12862,7 +13034,7 @@ No. of variables tried at each split: 100
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [329]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [64]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Generate test set predictions from final fitted forests</span>
@@ -12878,16 +13050,28 @@ No. of variables tried at each split: 100
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [330]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [65]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># error from final forest</span>
 <span class="n">os_rf_test_err</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">tail</span><span class="p">(</span><span class="n">os_rf_pred_test</span><span class="o">$</span><span class="n">err.rate</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
 <span class="n">dfc_rf_test_err</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">tail</span><span class="p">(</span><span class="n">dfc_rf_pred_test</span><span class="o">$</span><span class="n">err.rate</span><span class="p">,</span><span class="w"> </span><span class="m">1</span><span class="p">))</span>
 
+<span class="c1"># concordance from test-set risk predictions</span>
+<span class="n">os_rf_test_cindex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">concordance</span><span class="p">(</span>
+<span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">os_test</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">os_test</span><span class="o">$</span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">os_rf_pred_test</span><span class="o">$</span><span class="n">predicted</span><span class="p">,</span>
+<span class="w">  </span><span class="n">reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span>
+<span class="p">)</span><span class="o">$</span><span class="n">concordance</span>
+
+<span class="n">dfc_rf_test_cindex</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">concordance</span><span class="p">(</span>
+<span class="w">  </span><span class="nf">Surv</span><span class="p">(</span><span class="n">dfc_test</span><span class="o">$</span><span class="n">time</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_test</span><span class="o">$</span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">dfc_rf_pred_test</span><span class="o">$</span><span class="n">predicted</span><span class="p">,</span>
+<span class="w">  </span><span class="n">reverse</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span>
+<span class="p">)</span><span class="o">$</span><span class="n">concordance</span>
+
 <span class="n">final_rf_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
 <span class="w">  </span><span class="n">event_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"overall_survival"</span><span class="p">,</span><span class="w"> </span><span class="s">"death_from_cancer"</span><span class="p">),</span>
-<span class="w">  </span><span class="n">test_error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">os_rf_test_err</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_rf_test_err</span><span class="p">)</span>
+<span class="w">  </span><span class="n">test_error</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">os_rf_test_err</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_rf_test_err</span><span class="p">),</span>
+<span class="w">  </span><span class="n">test_cindex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">os_rf_test_cindex</span><span class="p">,</span><span class="w"> </span><span class="n">dfc_rf_test_cindex</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">final_rf_results</span>
@@ -12904,14 +13088,14 @@ No. of variables tried at each split: 100
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <table class="dataframe">
-<caption>A data.frame: 2 × 2</caption>
+<caption>A data.frame: 2 × 3</caption>
 <thead>
-<tr><th scope="col">event_var</th><th scope="col">test_error</th></tr>
-<tr><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+<tr><th scope="col">event_var</th><th scope="col">test_error</th><th scope="col">test_cindex</th></tr>
+<tr><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-<tr><td>overall_survival </td><td>0.3030246</td></tr>
-<tr><td>death_from_cancer</td><td>0.3128448</td></tr>
+<tr><td>overall_survival </td><td>0.3075663</td><td>0.7399549</td></tr>
+<tr><td>death_from_cancer</td><td>0.3221704</td><td>0.7245624</td></tr>
 </tbody>
 </table>
 </div>
@@ -12940,23 +13124,12 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=79c2ef9b">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="encode-factors-into-numeric-matrices">encode factors into numeric matrices<a class="anchor-link" href="#encode-factors-into-numeric-matrices">¶</a></h3>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1a0ecce9">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=56767aa8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [331]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [66]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="n">encode_splits</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="kr">function</span><span class="p">(</span><span class="n">train_df</span><span class="p">,</span><span class="w"> </span><span class="n">valid_df</span><span class="p">,</span><span class="w"> </span><span class="n">test_df</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
@@ -13021,22 +13194,22 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e397b460">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=8ba7fd24">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Build-Cox-labels-for-XGBoost">Build Cox labels for XGBoost<a class="anchor-link" href="#Build-Cox-labels-for-XGBoost">¶</a></h3>
+<h2 id="Build-Cox-labels-for-XGBoost">Build Cox labels for XGBoost<a class="anchor-link" href="#Build-Cox-labels-for-XGBoost">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2b9caa16">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=fa8b1542">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [332]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [67]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># event observed  -&gt; positive time</span>
@@ -13083,22 +13256,22 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=aff31064">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2b1cabbb">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Hyperparameter-grid">Hyperparameter grid<a class="anchor-link" href="#Hyperparameter-grid">¶</a></h3>
+<h2 id="Hyperparameter-grid">Hyperparameter grid<a class="anchor-link" href="#Hyperparameter-grid">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=7f48f304">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=b8b8dcc4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [333]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [68]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="n">xgb_grid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">expand.grid</span><span class="p">(</span>
@@ -13123,25 +13296,27 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=4c828235">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d8a5f4fe">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Tune-overall-survival-model-on-validation-set">Tune overall survival model on validation set<a class="anchor-link" href="#Tune-overall-survival-model-on-validation-set">¶</a></h3>
+<h2 id="Tune-overall-survival-model-on-validation-set">Tune overall survival model on validation set<a class="anchor-link" href="#Tune-overall-survival-model-on-validation-set">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=976dbd02">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=75e29395">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [334]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [69]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="n">os_xgb_valid_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">()</span>
+<div class="highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="n">os_xgb_valid_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">()</span>
 
 <span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">xgb_grid</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span>
@@ -13195,12 +13370,12 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=83774407">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1581d9e6">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [335]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [70]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="n">os_xgb_valid_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">os_xgb_valid_results</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">os_xgb_valid_results</span><span class="o">$</span><span class="n">valid_nloglik</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
@@ -13224,67 +13399,67 @@ No. of variables tried at each split: 100
 <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row">48</th><td>0.05</td><td> 5</td><td>30</td><td>0.70</td><td>0.3</td><td> 77</td><td>3.660041</td></tr>
-<tr><th scope="row">57</th><td>0.05</td><td> 5</td><td>10</td><td>0.85</td><td>0.3</td><td> 38</td><td>3.660278</td></tr>
-<tr><th scope="row">87</th><td>0.05</td><td>10</td><td>10</td><td>0.55</td><td>0.5</td><td> 36</td><td>3.666515</td></tr>
-<tr><th scope="row">66</th><td>0.05</td><td> 5</td><td>20</td><td>0.85</td><td>0.3</td><td> 54</td><td>3.670745</td></tr>
-<tr><th scope="row">144</th><td>0.05</td><td>15</td><td>10</td><td>0.85</td><td>0.5</td><td> 34</td><td>3.672265</td></tr>
-<tr><th scope="row">1</th><td>0.01</td><td> 5</td><td>10</td><td>0.55</td><td>0.3</td><td>211</td><td>3.673239</td></tr>
-<tr><th scope="row">168</th><td>0.05</td><td>10</td><td>10</td><td>0.55</td><td>0.7</td><td> 21</td><td>3.674253</td></tr>
-<tr><th scope="row">50</th><td>0.03</td><td>10</td><td>30</td><td>0.70</td><td>0.3</td><td>101</td><td>3.674633</td></tr>
-<tr><th scope="row">3</th><td>0.05</td><td> 5</td><td>10</td><td>0.55</td><td>0.3</td><td> 37</td><td>3.676284</td></tr>
-<tr><th scope="row">173</th><td>0.03</td><td> 5</td><td>20</td><td>0.55</td><td>0.7</td><td> 71</td><td>3.676605</td></tr>
-<tr><th scope="row">42</th><td>0.05</td><td>10</td><td>20</td><td>0.70</td><td>0.3</td><td> 46</td><td>3.676789</td></tr>
-<tr><th scope="row">96</th><td>0.05</td><td>10</td><td>20</td><td>0.55</td><td>0.5</td><td> 59</td><td>3.676910</td></tr>
-<tr><th scope="row">47</th><td>0.03</td><td> 5</td><td>30</td><td>0.70</td><td>0.3</td><td> 90</td><td>3.677624</td></tr>
-<tr><th scope="row">207</th><td>0.05</td><td>15</td><td>20</td><td>0.70</td><td>0.7</td><td> 31</td><td>3.679606</td></tr>
-<tr><th scope="row">17</th><td>0.03</td><td>15</td><td>20</td><td>0.55</td><td>0.3</td><td> 65</td><td>3.680205</td></tr>
-<tr><th scope="row">21</th><td>0.05</td><td> 5</td><td>30</td><td>0.55</td><td>0.3</td><td> 83</td><td>3.681154</td></tr>
-<tr><th scope="row">132</th><td>0.05</td><td>10</td><td>30</td><td>0.70</td><td>0.5</td><td> 51</td><td>3.681574</td></tr>
-<tr><th scope="row">234</th><td>0.05</td><td>15</td><td>20</td><td>0.85</td><td>0.7</td><td> 33</td><td>3.681945</td></tr>
-<tr><th scope="row">93</th><td>0.05</td><td> 5</td><td>20</td><td>0.55</td><td>0.5</td><td> 72</td><td>3.682542</td></tr>
-<tr><th scope="row">65</th><td>0.03</td><td> 5</td><td>20</td><td>0.85</td><td>0.3</td><td> 72</td><td>3.682637</td></tr>
-<tr><th scope="row">75</th><td>0.05</td><td> 5</td><td>30</td><td>0.85</td><td>0.3</td><td> 33</td><td>3.682651</td></tr>
-<tr><th scope="row">23</th><td>0.03</td><td>10</td><td>30</td><td>0.55</td><td>0.3</td><td> 86</td><td>3.683541</td></tr>
-<tr><th scope="row">67</th><td>0.01</td><td>10</td><td>20</td><td>0.85</td><td>0.3</td><td>186</td><td>3.683735</td></tr>
-<tr><th scope="row">171</th><td>0.05</td><td>15</td><td>10</td><td>0.55</td><td>0.7</td><td> 50</td><td>3.683754</td></tr>
-<tr><th scope="row">58</th><td>0.01</td><td>10</td><td>10</td><td>0.85</td><td>0.3</td><td>138</td><td>3.685052</td></tr>
-<tr><th scope="row">14</th><td>0.03</td><td>10</td><td>20</td><td>0.55</td><td>0.3</td><td> 66</td><td>3.685491</td></tr>
-<tr><th scope="row">165</th><td>0.05</td><td> 5</td><td>10</td><td>0.55</td><td>0.7</td><td> 39</td><td>3.686233</td></tr>
-<tr><th scope="row">79</th><td>0.01</td><td>15</td><td>30</td><td>0.85</td><td>0.3</td><td>217</td><td>3.686320</td></tr>
-<tr><th scope="row">146</th><td>0.03</td><td> 5</td><td>20</td><td>0.85</td><td>0.5</td><td> 56</td><td>3.686478</td></tr>
-<tr><th scope="row">240</th><td>0.05</td><td>10</td><td>30</td><td>0.85</td><td>0.7</td><td> 43</td><td>3.686684</td></tr>
+<tr><th scope="row">186</th><td>0.05</td><td>10</td><td>30</td><td>0.55</td><td>0.7</td><td> 62</td><td>3.658050</td></tr>
+<tr><th scope="row">2</th><td>0.03</td><td> 5</td><td>10</td><td>0.55</td><td>0.3</td><td> 68</td><td>3.664584</td></tr>
+<tr><th scope="row">141</th><td>0.05</td><td>10</td><td>10</td><td>0.85</td><td>0.5</td><td> 38</td><td>3.664883</td></tr>
+<tr><th scope="row">8</th><td>0.03</td><td>15</td><td>10</td><td>0.55</td><td>0.3</td><td> 69</td><td>3.666892</td></tr>
+<tr><th scope="row">50</th><td>0.03</td><td>10</td><td>30</td><td>0.70</td><td>0.3</td><td> 98</td><td>3.666987</td></tr>
+<tr><th scope="row">189</th><td>0.05</td><td>15</td><td>30</td><td>0.55</td><td>0.7</td><td> 77</td><td>3.669251</td></tr>
+<tr><th scope="row">5</th><td>0.03</td><td>10</td><td>10</td><td>0.55</td><td>0.3</td><td> 55</td><td>3.674174</td></tr>
+<tr><th scope="row">56</th><td>0.03</td><td> 5</td><td>10</td><td>0.85</td><td>0.3</td><td> 55</td><td>3.674231</td></tr>
+<tr><th scope="row">98</th><td>0.03</td><td>15</td><td>20</td><td>0.55</td><td>0.5</td><td>136</td><td>3.675483</td></tr>
+<tr><th scope="row">163</th><td>0.01</td><td> 5</td><td>10</td><td>0.55</td><td>0.7</td><td>201</td><td>3.675591</td></tr>
+<tr><th scope="row">33</th><td>0.05</td><td>10</td><td>10</td><td>0.70</td><td>0.3</td><td> 37</td><td>3.675987</td></tr>
+<tr><th scope="row">120</th><td>0.05</td><td> 5</td><td>20</td><td>0.70</td><td>0.5</td><td> 36</td><td>3.675994</td></tr>
+<tr><th scope="row">26</th><td>0.03</td><td>15</td><td>30</td><td>0.55</td><td>0.3</td><td> 99</td><td>3.676272</td></tr>
+<tr><th scope="row">177</th><td>0.05</td><td>10</td><td>20</td><td>0.55</td><td>0.7</td><td> 49</td><td>3.677222</td></tr>
+<tr><th scope="row">62</th><td>0.03</td><td>15</td><td>10</td><td>0.85</td><td>0.3</td><td> 54</td><td>3.677709</td></tr>
+<tr><th scope="row">66</th><td>0.05</td><td> 5</td><td>20</td><td>0.85</td><td>0.3</td><td> 56</td><td>3.678976</td></tr>
+<tr><th scope="row">123</th><td>0.05</td><td>10</td><td>20</td><td>0.70</td><td>0.5</td><td> 36</td><td>3.679002</td></tr>
+<tr><th scope="row">224</th><td>0.03</td><td>15</td><td>10</td><td>0.85</td><td>0.7</td><td> 38</td><td>3.679521</td></tr>
+<tr><th scope="row">150</th><td>0.05</td><td>10</td><td>20</td><td>0.85</td><td>0.5</td><td> 52</td><td>3.679698</td></tr>
+<tr><th scope="row">99</th><td>0.05</td><td>15</td><td>20</td><td>0.55</td><td>0.5</td><td> 41</td><td>3.680079</td></tr>
+<tr><th scope="row">229</th><td>0.01</td><td>10</td><td>20</td><td>0.85</td><td>0.7</td><td>157</td><td>3.681724</td></tr>
+<tr><th scope="row">77</th><td>0.03</td><td>10</td><td>30</td><td>0.85</td><td>0.3</td><td> 88</td><td>3.682575</td></tr>
+<tr><th scope="row">204</th><td>0.05</td><td>10</td><td>20</td><td>0.70</td><td>0.7</td><td> 42</td><td>3.682718</td></tr>
+<tr><th scope="row">81</th><td>0.05</td><td>15</td><td>30</td><td>0.85</td><td>0.3</td><td> 62</td><td>3.683061</td></tr>
+<tr><th scope="row">126</th><td>0.05</td><td>15</td><td>20</td><td>0.70</td><td>0.5</td><td> 55</td><td>3.683183</td></tr>
+<tr><th scope="row">42</th><td>0.05</td><td>10</td><td>20</td><td>0.70</td><td>0.3</td><td> 58</td><td>3.683776</td></tr>
+<tr><th scope="row">96</th><td>0.05</td><td>10</td><td>20</td><td>0.55</td><td>0.5</td><td> 33</td><td>3.684102</td></tr>
+<tr><th scope="row">11</th><td>0.03</td><td> 5</td><td>20</td><td>0.55</td><td>0.3</td><td> 74</td><td>3.684286</td></tr>
+<tr><th scope="row">143</th><td>0.03</td><td>15</td><td>10</td><td>0.85</td><td>0.5</td><td> 39</td><td>3.684894</td></tr>
+<tr><th scope="row">95</th><td>0.03</td><td>10</td><td>20</td><td>0.55</td><td>0.5</td><td> 69</td><td>3.685076</td></tr>
 <tr><th scope="row">⋮</th><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
-<tr><th scope="row">83</th><td>0.03</td><td> 5</td><td>10</td><td>0.55</td><td>0.5</td><td>29</td><td>3.715375</td></tr>
-<tr><th scope="row">108</th><td>0.05</td><td>15</td><td>30</td><td>0.55</td><td>0.5</td><td>29</td><td>3.715625</td></tr>
-<tr><th scope="row">44</th><td>0.03</td><td>15</td><td>20</td><td>0.70</td><td>0.3</td><td>54</td><td>3.715968</td></tr>
-<tr><th scope="row">98</th><td>0.03</td><td>15</td><td>20</td><td>0.55</td><td>0.5</td><td>76</td><td>3.716207</td></tr>
-<tr><th scope="row">186</th><td>0.05</td><td>10</td><td>30</td><td>0.55</td><td>0.7</td><td>39</td><td>3.716775</td></tr>
-<tr><th scope="row">143</th><td>0.03</td><td>15</td><td>10</td><td>0.85</td><td>0.5</td><td>39</td><td>3.716810</td></tr>
-<tr><th scope="row">174</th><td>0.05</td><td> 5</td><td>20</td><td>0.55</td><td>0.7</td><td>50</td><td>3.717039</td></tr>
-<tr><th scope="row">107</th><td>0.03</td><td>15</td><td>30</td><td>0.55</td><td>0.5</td><td>70</td><td>3.717496</td></tr>
-<tr><th scope="row">89</th><td>0.03</td><td>15</td><td>10</td><td>0.55</td><td>0.5</td><td>66</td><td>3.717585</td></tr>
-<tr><th scope="row">167</th><td>0.03</td><td>10</td><td>10</td><td>0.55</td><td>0.7</td><td>31</td><td>3.718796</td></tr>
-<tr><th scope="row">239</th><td>0.03</td><td>10</td><td>30</td><td>0.85</td><td>0.7</td><td>58</td><td>3.719711</td></tr>
-<tr><th scope="row">243</th><td>0.05</td><td>15</td><td>30</td><td>0.85</td><td>0.7</td><td>24</td><td>3.720399</td></tr>
-<tr><th scope="row">213</th><td>0.05</td><td>10</td><td>30</td><td>0.70</td><td>0.7</td><td>28</td><td>3.721478</td></tr>
-<tr><th scope="row">162</th><td>0.05</td><td>15</td><td>30</td><td>0.85</td><td>0.5</td><td>36</td><td>3.721840</td></tr>
-<tr><th scope="row">18</th><td>0.05</td><td>15</td><td>20</td><td>0.55</td><td>0.3</td><td>52</td><td>3.721867</td></tr>
-<tr><th scope="row">99</th><td>0.05</td><td>15</td><td>20</td><td>0.55</td><td>0.5</td><td>34</td><td>3.722496</td></tr>
-<tr><th scope="row">105</th><td>0.05</td><td>10</td><td>30</td><td>0.55</td><td>0.5</td><td>33</td><td>3.722895</td></tr>
-<tr><th scope="row">114</th><td>0.05</td><td>10</td><td>10</td><td>0.70</td><td>0.5</td><td>20</td><td>3.723271</td></tr>
-<tr><th scope="row">198</th><td>0.05</td><td>15</td><td>10</td><td>0.70</td><td>0.7</td><td>11</td><td>3.723429</td></tr>
-<tr><th scope="row">228</th><td>0.05</td><td> 5</td><td>20</td><td>0.85</td><td>0.7</td><td>32</td><td>3.724407</td></tr>
-<tr><th scope="row">92</th><td>0.03</td><td> 5</td><td>20</td><td>0.55</td><td>0.5</td><td>44</td><td>3.725183</td></tr>
-<tr><th scope="row">116</th><td>0.03</td><td>15</td><td>10</td><td>0.70</td><td>0.5</td><td>48</td><td>3.726208</td></tr>
-<tr><th scope="row">237</th><td>0.05</td><td> 5</td><td>30</td><td>0.85</td><td>0.7</td><td>21</td><td>3.726736</td></tr>
-<tr><th scope="row">84</th><td>0.05</td><td> 5</td><td>10</td><td>0.55</td><td>0.5</td><td>23</td><td>3.727545</td></tr>
-<tr><th scope="row">60</th><td>0.05</td><td>10</td><td>10</td><td>0.85</td><td>0.3</td><td>21</td><td>3.732310</td></tr>
-<tr><th scope="row">156</th><td>0.05</td><td> 5</td><td>30</td><td>0.85</td><td>0.5</td><td>27</td><td>3.734488</td></tr>
-<tr><th scope="row">62</th><td>0.03</td><td>15</td><td>10</td><td>0.85</td><td>0.3</td><td>32</td><td>3.739727</td></tr>
-<tr><th scope="row">9</th><td>0.05</td><td>15</td><td>10</td><td>0.55</td><td>0.3</td><td>19</td><td>3.742916</td></tr>
-<tr><th scope="row">33</th><td>0.05</td><td>10</td><td>10</td><td>0.70</td><td>0.3</td><td>12</td><td>3.744727</td></tr>
-<tr><th scope="row">141</th><td>0.05</td><td>10</td><td>10</td><td>0.85</td><td>0.5</td><td>11</td><td>3.747868</td></tr>
+<tr><th scope="row">3</th><td>0.05</td><td> 5</td><td>10</td><td>0.55</td><td>0.3</td><td> 27</td><td>3.713976</td></tr>
+<tr><th scope="row">41</th><td>0.03</td><td>10</td><td>20</td><td>0.70</td><td>0.3</td><td> 37</td><td>3.714131</td></tr>
+<tr><th scope="row">195</th><td>0.05</td><td>10</td><td>10</td><td>0.70</td><td>0.7</td><td> 25</td><td>3.714304</td></tr>
+<tr><th scope="row">1</th><td>0.01</td><td> 5</td><td>10</td><td>0.55</td><td>0.3</td><td>118</td><td>3.714709</td></tr>
+<tr><th scope="row">87</th><td>0.05</td><td>10</td><td>10</td><td>0.55</td><td>0.5</td><td> 34</td><td>3.715429</td></tr>
+<tr><th scope="row">17</th><td>0.03</td><td>15</td><td>20</td><td>0.55</td><td>0.3</td><td> 39</td><td>3.715512</td></tr>
+<tr><th scope="row">27</th><td>0.05</td><td>15</td><td>30</td><td>0.55</td><td>0.3</td><td> 35</td><td>3.715807</td></tr>
+<tr><th scope="row">147</th><td>0.05</td><td> 5</td><td>20</td><td>0.85</td><td>0.5</td><td> 35</td><td>3.716282</td></tr>
+<tr><th scope="row">213</th><td>0.05</td><td>10</td><td>30</td><td>0.70</td><td>0.7</td><td> 57</td><td>3.716308</td></tr>
+<tr><th scope="row">207</th><td>0.05</td><td>15</td><td>20</td><td>0.70</td><td>0.7</td><td> 25</td><td>3.716852</td></tr>
+<tr><th scope="row">201</th><td>0.05</td><td> 5</td><td>20</td><td>0.70</td><td>0.7</td><td> 32</td><td>3.717121</td></tr>
+<tr><th scope="row">239</th><td>0.03</td><td>10</td><td>30</td><td>0.85</td><td>0.7</td><td> 53</td><td>3.717374</td></tr>
+<tr><th scope="row">170</th><td>0.03</td><td>15</td><td>10</td><td>0.55</td><td>0.7</td><td> 24</td><td>3.718266</td></tr>
+<tr><th scope="row">222</th><td>0.05</td><td>10</td><td>10</td><td>0.85</td><td>0.7</td><td> 11</td><td>3.718383</td></tr>
+<tr><th scope="row">227</th><td>0.03</td><td> 5</td><td>20</td><td>0.85</td><td>0.7</td><td> 33</td><td>3.718410</td></tr>
+<tr><th scope="row">125</th><td>0.03</td><td>15</td><td>20</td><td>0.70</td><td>0.5</td><td> 60</td><td>3.719093</td></tr>
+<tr><th scope="row">158</th><td>0.03</td><td>10</td><td>30</td><td>0.85</td><td>0.5</td><td> 58</td><td>3.720542</td></tr>
+<tr><th scope="row">174</th><td>0.05</td><td> 5</td><td>20</td><td>0.55</td><td>0.7</td><td> 26</td><td>3.720816</td></tr>
+<tr><th scope="row">192</th><td>0.05</td><td> 5</td><td>10</td><td>0.70</td><td>0.7</td><td> 36</td><td>3.722181</td></tr>
+<tr><th scope="row">156</th><td>0.05</td><td> 5</td><td>30</td><td>0.85</td><td>0.5</td><td> 41</td><td>3.723180</td></tr>
+<tr><th scope="row">198</th><td>0.05</td><td>15</td><td>10</td><td>0.70</td><td>0.7</td><td> 26</td><td>3.723624</td></tr>
+<tr><th scope="row">225</th><td>0.05</td><td>15</td><td>10</td><td>0.85</td><td>0.7</td><td> 20</td><td>3.724149</td></tr>
+<tr><th scope="row">54</th><td>0.05</td><td>15</td><td>30</td><td>0.70</td><td>0.3</td><td> 40</td><td>3.724929</td></tr>
+<tr><th scope="row">200</th><td>0.03</td><td> 5</td><td>20</td><td>0.70</td><td>0.7</td><td> 41</td><td>3.725104</td></tr>
+<tr><th scope="row">179</th><td>0.03</td><td>15</td><td>20</td><td>0.55</td><td>0.7</td><td> 54</td><td>3.728048</td></tr>
+<tr><th scope="row">137</th><td>0.03</td><td> 5</td><td>10</td><td>0.85</td><td>0.5</td><td> 45</td><td>3.732258</td></tr>
+<tr><th scope="row">240</th><td>0.05</td><td>10</td><td>30</td><td>0.85</td><td>0.7</td><td> 17</td><td>3.733064</td></tr>
+<tr><th scope="row">171</th><td>0.05</td><td>15</td><td>10</td><td>0.55</td><td>0.7</td><td> 17</td><td>3.733545</td></tr>
+<tr><th scope="row">84</th><td>0.05</td><td> 5</td><td>10</td><td>0.55</td><td>0.5</td><td> 15</td><td>3.734217</td></tr>
+<tr><th scope="row">234</th><td>0.05</td><td>15</td><td>20</td><td>0.85</td><td>0.7</td><td> 23</td><td>3.735746</td></tr>
 </tbody>
 </table>
 </div>
@@ -13292,25 +13467,27 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=49d0782c">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=c45cb03b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Tune-death-from-cancer-model-on-validation-set">Tune death-from-cancer model on validation set<a class="anchor-link" href="#Tune-death-from-cancer-model-on-validation-set">¶</a></h3>
+<h2 id="Tune-death-from-cancer-model-on-validation-set">Tune death-from-cancer model on validation set<a class="anchor-link" href="#Tune-death-from-cancer-model-on-validation-set">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=86b5efb0">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=850769cd">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [336]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [71]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-r"><pre><span></span><span class="n">dfc_xgb_valid_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">()</span>
+<div class="highlight hl-r"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+
+<span class="n">dfc_xgb_valid_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">()</span>
 
 <span class="kr">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="kr">in</span><span class="w"> </span><span class="nf">seq_len</span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">xgb_grid</span><span class="p">)))</span><span class="w"> </span><span class="p">{</span>
 <span class="w">  </span>
@@ -13364,12 +13541,12 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a6bd433e">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=eb27a973">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [337]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [72]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="n">dfc_xgb_valid_results</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_xgb_valid_results</span><span class="p">[</span><span class="nf">order</span><span class="p">(</span><span class="n">dfc_xgb_valid_results</span><span class="o">$</span><span class="n">valid_nloglik</span><span class="p">),</span><span class="w"> </span><span class="p">]</span>
@@ -13393,67 +13570,67 @@ No. of variables tried at each split: 100
 <tr><th></th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;dbl&gt;</th><th scope="col">&lt;int&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row">201</th><td>0.05</td><td> 5</td><td>20</td><td>0.70</td><td>0.7</td><td>136</td><td>4.208340</td></tr>
-<tr><th scope="row">216</th><td>0.05</td><td>15</td><td>30</td><td>0.70</td><td>0.7</td><td>160</td><td>4.249478</td></tr>
-<tr><th scope="row">102</th><td>0.05</td><td> 5</td><td>30</td><td>0.55</td><td>0.5</td><td>156</td><td>4.252908</td></tr>
-<tr><th scope="row">123</th><td>0.05</td><td>10</td><td>20</td><td>0.70</td><td>0.5</td><td> 96</td><td>4.254536</td></tr>
-<tr><th scope="row">194</th><td>0.03</td><td>10</td><td>10</td><td>0.70</td><td>0.7</td><td>140</td><td>4.261666</td></tr>
-<tr><th scope="row">186</th><td>0.05</td><td>10</td><td>30</td><td>0.55</td><td>0.7</td><td>127</td><td>4.263955</td></tr>
-<tr><th scope="row">212</th><td>0.03</td><td>10</td><td>30</td><td>0.70</td><td>0.7</td><td>173</td><td>4.276312</td></tr>
-<tr><th scope="row">210</th><td>0.05</td><td> 5</td><td>30</td><td>0.70</td><td>0.7</td><td> 87</td><td>4.277022</td></tr>
-<tr><th scope="row">135</th><td>0.05</td><td>15</td><td>30</td><td>0.70</td><td>0.5</td><td> 69</td><td>4.285023</td></tr>
-<tr><th scope="row">110</th><td>0.03</td><td> 5</td><td>10</td><td>0.70</td><td>0.5</td><td>144</td><td>4.286890</td></tr>
-<tr><th scope="row">240</th><td>0.05</td><td>10</td><td>30</td><td>0.85</td><td>0.7</td><td>143</td><td>4.289135</td></tr>
-<tr><th scope="row">21</th><td>0.05</td><td> 5</td><td>30</td><td>0.55</td><td>0.3</td><td>220</td><td>4.289832</td></tr>
-<tr><th scope="row">125</th><td>0.03</td><td>15</td><td>20</td><td>0.70</td><td>0.5</td><td>104</td><td>4.290016</td></tr>
-<tr><th scope="row">14</th><td>0.03</td><td>10</td><td>20</td><td>0.55</td><td>0.3</td><td>254</td><td>4.290779</td></tr>
-<tr><th scope="row">152</th><td>0.03</td><td>15</td><td>20</td><td>0.85</td><td>0.5</td><td>175</td><td>4.290940</td></tr>
-<tr><th scope="row">227</th><td>0.03</td><td> 5</td><td>20</td><td>0.85</td><td>0.7</td><td>162</td><td>4.291974</td></tr>
-<tr><th scope="row">162</th><td>0.05</td><td>15</td><td>30</td><td>0.85</td><td>0.5</td><td>139</td><td>4.292395</td></tr>
-<tr><th scope="row">65</th><td>0.03</td><td> 5</td><td>20</td><td>0.85</td><td>0.3</td><td>208</td><td>4.292836</td></tr>
-<tr><th scope="row">107</th><td>0.03</td><td>15</td><td>30</td><td>0.55</td><td>0.5</td><td>225</td><td>4.293286</td></tr>
-<tr><th scope="row">126</th><td>0.05</td><td>15</td><td>20</td><td>0.70</td><td>0.5</td><td> 81</td><td>4.293605</td></tr>
-<tr><th scope="row">132</th><td>0.05</td><td>10</td><td>30</td><td>0.70</td><td>0.5</td><td>133</td><td>4.295474</td></tr>
-<tr><th scope="row">168</th><td>0.05</td><td>10</td><td>10</td><td>0.55</td><td>0.7</td><td> 72</td><td>4.295895</td></tr>
-<tr><th scope="row">116</th><td>0.03</td><td>15</td><td>10</td><td>0.70</td><td>0.5</td><td> 94</td><td>4.298440</td></tr>
-<tr><th scope="row">59</th><td>0.03</td><td>10</td><td>10</td><td>0.85</td><td>0.3</td><td>141</td><td>4.299280</td></tr>
-<tr><th scope="row">153</th><td>0.05</td><td>15</td><td>20</td><td>0.85</td><td>0.5</td><td>144</td><td>4.300336</td></tr>
-<tr><th scope="row">236</th><td>0.03</td><td> 5</td><td>30</td><td>0.85</td><td>0.7</td><td>218</td><td>4.300506</td></tr>
-<tr><th scope="row">215</th><td>0.03</td><td>15</td><td>30</td><td>0.70</td><td>0.7</td><td>143</td><td>4.302274</td></tr>
-<tr><th scope="row">71</th><td>0.03</td><td>15</td><td>20</td><td>0.85</td><td>0.3</td><td>139</td><td>4.302289</td></tr>
-<tr><th scope="row">142</th><td>0.01</td><td>15</td><td>10</td><td>0.85</td><td>0.5</td><td>242</td><td>4.302484</td></tr>
-<tr><th scope="row">174</th><td>0.05</td><td> 5</td><td>20</td><td>0.55</td><td>0.7</td><td>100</td><td>4.303740</td></tr>
+<tr><th scope="row">177</th><td>0.05</td><td>10</td><td>20</td><td>0.55</td><td>0.7</td><td>102</td><td>4.257917</td></tr>
+<tr><th scope="row">224</th><td>0.03</td><td>15</td><td>10</td><td>0.85</td><td>0.7</td><td>171</td><td>4.263136</td></tr>
+<tr><th scope="row">29</th><td>0.03</td><td> 5</td><td>10</td><td>0.70</td><td>0.3</td><td>114</td><td>4.268392</td></tr>
+<tr><th scope="row">51</th><td>0.05</td><td>10</td><td>30</td><td>0.70</td><td>0.3</td><td>143</td><td>4.286175</td></tr>
+<tr><th scope="row">123</th><td>0.05</td><td>10</td><td>20</td><td>0.70</td><td>0.5</td><td>126</td><td>4.289352</td></tr>
+<tr><th scope="row">146</th><td>0.03</td><td> 5</td><td>20</td><td>0.85</td><td>0.5</td><td>187</td><td>4.290954</td></tr>
+<tr><th scope="row">225</th><td>0.05</td><td>15</td><td>10</td><td>0.85</td><td>0.7</td><td> 68</td><td>4.291486</td></tr>
+<tr><th scope="row">206</th><td>0.03</td><td>15</td><td>20</td><td>0.70</td><td>0.7</td><td>190</td><td>4.294071</td></tr>
+<tr><th scope="row">101</th><td>0.03</td><td> 5</td><td>30</td><td>0.55</td><td>0.5</td><td>141</td><td>4.294370</td></tr>
+<tr><th scope="row">162</th><td>0.05</td><td>15</td><td>30</td><td>0.85</td><td>0.5</td><td>132</td><td>4.295066</td></tr>
+<tr><th scope="row">120</th><td>0.05</td><td> 5</td><td>20</td><td>0.70</td><td>0.5</td><td>142</td><td>4.295178</td></tr>
+<tr><th scope="row">159</th><td>0.05</td><td>10</td><td>30</td><td>0.85</td><td>0.5</td><td>104</td><td>4.295711</td></tr>
+<tr><th scope="row">183</th><td>0.05</td><td> 5</td><td>30</td><td>0.55</td><td>0.7</td><td>145</td><td>4.297700</td></tr>
+<tr><th scope="row">180</th><td>0.05</td><td>15</td><td>20</td><td>0.55</td><td>0.7</td><td> 79</td><td>4.299607</td></tr>
+<tr><th scope="row">142</th><td>0.01</td><td>15</td><td>10</td><td>0.85</td><td>0.5</td><td>332</td><td>4.299970</td></tr>
+<tr><th scope="row">204</th><td>0.05</td><td>10</td><td>20</td><td>0.70</td><td>0.7</td><td> 83</td><td>4.302049</td></tr>
+<tr><th scope="row">237</th><td>0.05</td><td> 5</td><td>30</td><td>0.85</td><td>0.7</td><td> 74</td><td>4.303063</td></tr>
+<tr><th scope="row">226</th><td>0.01</td><td> 5</td><td>20</td><td>0.85</td><td>0.7</td><td>400</td><td>4.303853</td></tr>
+<tr><th scope="row">111</th><td>0.05</td><td> 5</td><td>10</td><td>0.70</td><td>0.5</td><td> 67</td><td>4.304271</td></tr>
+<tr><th scope="row">65</th><td>0.03</td><td> 5</td><td>20</td><td>0.85</td><td>0.3</td><td>216</td><td>4.306291</td></tr>
+<tr><th scope="row">81</th><td>0.05</td><td>15</td><td>30</td><td>0.85</td><td>0.3</td><td>125</td><td>4.307756</td></tr>
+<tr><th scope="row">66</th><td>0.05</td><td> 5</td><td>20</td><td>0.85</td><td>0.3</td><td>135</td><td>4.308062</td></tr>
+<tr><th scope="row">186</th><td>0.05</td><td>10</td><td>30</td><td>0.55</td><td>0.7</td><td>103</td><td>4.308258</td></tr>
+<tr><th scope="row">11</th><td>0.03</td><td> 5</td><td>20</td><td>0.55</td><td>0.3</td><td>124</td><td>4.309169</td></tr>
+<tr><th scope="row">228</th><td>0.05</td><td> 5</td><td>20</td><td>0.85</td><td>0.7</td><td> 79</td><td>4.310009</td></tr>
+<tr><th scope="row">70</th><td>0.01</td><td>15</td><td>20</td><td>0.85</td><td>0.3</td><td>442</td><td>4.310169</td></tr>
+<tr><th scope="row">240</th><td>0.05</td><td>10</td><td>30</td><td>0.85</td><td>0.7</td><td>117</td><td>4.310543</td></tr>
+<tr><th scope="row">145</th><td>0.01</td><td> 5</td><td>20</td><td>0.85</td><td>0.5</td><td>406</td><td>4.310906</td></tr>
+<tr><th scope="row">199</th><td>0.01</td><td> 5</td><td>20</td><td>0.70</td><td>0.7</td><td>345</td><td>4.311563</td></tr>
+<tr><th scope="row">2</th><td>0.03</td><td> 5</td><td>10</td><td>0.55</td><td>0.3</td><td>137</td><td>4.312312</td></tr>
 <tr><th scope="row">⋮</th><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td><td>⋮</td></tr>
-<tr><th scope="row">63</th><td>0.05</td><td>15</td><td>10</td><td>0.85</td><td>0.3</td><td>122</td><td>4.374438</td></tr>
-<tr><th scope="row">33</th><td>0.05</td><td>10</td><td>10</td><td>0.70</td><td>0.3</td><td> 70</td><td>4.375649</td></tr>
-<tr><th scope="row">99</th><td>0.05</td><td>15</td><td>20</td><td>0.55</td><td>0.5</td><td> 90</td><td>4.375681</td></tr>
-<tr><th scope="row">24</th><td>0.05</td><td>10</td><td>30</td><td>0.55</td><td>0.3</td><td> 86</td><td>4.376053</td></tr>
-<tr><th scope="row">84</th><td>0.05</td><td> 5</td><td>10</td><td>0.55</td><td>0.5</td><td> 77</td><td>4.377592</td></tr>
-<tr><th scope="row">28</th><td>0.01</td><td> 5</td><td>10</td><td>0.70</td><td>0.3</td><td>332</td><td>4.379647</td></tr>
-<tr><th scope="row">66</th><td>0.05</td><td> 5</td><td>20</td><td>0.85</td><td>0.3</td><td> 84</td><td>4.380846</td></tr>
-<tr><th scope="row">90</th><td>0.05</td><td>15</td><td>10</td><td>0.55</td><td>0.5</td><td> 65</td><td>4.381161</td></tr>
-<tr><th scope="row">61</th><td>0.01</td><td>15</td><td>10</td><td>0.85</td><td>0.3</td><td>270</td><td>4.381229</td></tr>
-<tr><th scope="row">137</th><td>0.03</td><td> 5</td><td>10</td><td>0.85</td><td>0.5</td><td> 96</td><td>4.382078</td></tr>
-<tr><th scope="row">131</th><td>0.03</td><td>10</td><td>30</td><td>0.70</td><td>0.5</td><td>103</td><td>4.384284</td></tr>
-<tr><th scope="row">3</th><td>0.05</td><td> 5</td><td>10</td><td>0.55</td><td>0.3</td><td> 44</td><td>4.384684</td></tr>
-<tr><th scope="row">26</th><td>0.03</td><td>15</td><td>30</td><td>0.55</td><td>0.3</td><td> 75</td><td>4.385950</td></tr>
-<tr><th scope="row">169</th><td>0.01</td><td>15</td><td>10</td><td>0.55</td><td>0.7</td><td>183</td><td>4.386107</td></tr>
-<tr><th scope="row">17</th><td>0.03</td><td>15</td><td>20</td><td>0.55</td><td>0.3</td><td> 93</td><td>4.390475</td></tr>
-<tr><th scope="row">4</th><td>0.01</td><td>10</td><td>10</td><td>0.55</td><td>0.3</td><td>186</td><td>4.396031</td></tr>
-<tr><th scope="row">7</th><td>0.01</td><td>15</td><td>10</td><td>0.55</td><td>0.3</td><td>227</td><td>4.396135</td></tr>
-<tr><th scope="row">222</th><td>0.05</td><td>10</td><td>10</td><td>0.85</td><td>0.7</td><td> 39</td><td>4.397883</td></tr>
-<tr><th scope="row">87</th><td>0.05</td><td>10</td><td>10</td><td>0.55</td><td>0.5</td><td> 99</td><td>4.398496</td></tr>
-<tr><th scope="row">141</th><td>0.05</td><td>10</td><td>10</td><td>0.85</td><td>0.5</td><td> 48</td><td>4.398724</td></tr>
-<tr><th scope="row">171</th><td>0.05</td><td>15</td><td>10</td><td>0.55</td><td>0.7</td><td> 98</td><td>4.399446</td></tr>
-<tr><th scope="row">2</th><td>0.03</td><td> 5</td><td>10</td><td>0.55</td><td>0.3</td><td>119</td><td>4.399887</td></tr>
-<tr><th scope="row">57</th><td>0.05</td><td> 5</td><td>10</td><td>0.85</td><td>0.3</td><td> 64</td><td>4.400632</td></tr>
-<tr><th scope="row">60</th><td>0.05</td><td>10</td><td>10</td><td>0.85</td><td>0.3</td><td> 78</td><td>4.402546</td></tr>
-<tr><th scope="row">32</th><td>0.03</td><td>10</td><td>10</td><td>0.70</td><td>0.3</td><td> 87</td><td>4.407174</td></tr>
-<tr><th scope="row">51</th><td>0.05</td><td>10</td><td>30</td><td>0.70</td><td>0.3</td><td> 87</td><td>4.407455</td></tr>
-<tr><th scope="row">62</th><td>0.03</td><td>15</td><td>10</td><td>0.85</td><td>0.3</td><td> 73</td><td>4.408546</td></tr>
-<tr><th scope="row">6</th><td>0.05</td><td>10</td><td>10</td><td>0.55</td><td>0.3</td><td> 57</td><td>4.409089</td></tr>
-<tr><th scope="row">45</th><td>0.05</td><td>15</td><td>20</td><td>0.70</td><td>0.3</td><td> 90</td><td>4.433301</td></tr>
-<tr><th scope="row">117</th><td>0.05</td><td>15</td><td>10</td><td>0.70</td><td>0.5</td><td> 39</td><td>4.433835</td></tr>
+<tr><th scope="row">143</th><td>0.03</td><td>15</td><td>10</td><td>0.85</td><td>0.5</td><td>144</td><td>4.372497</td></tr>
+<tr><th scope="row">84</th><td>0.05</td><td> 5</td><td>10</td><td>0.55</td><td>0.5</td><td> 31</td><td>4.372971</td></tr>
+<tr><th scope="row">3</th><td>0.05</td><td> 5</td><td>10</td><td>0.55</td><td>0.3</td><td> 78</td><td>4.373071</td></tr>
+<tr><th scope="row">34</th><td>0.01</td><td>15</td><td>10</td><td>0.70</td><td>0.3</td><td>334</td><td>4.373514</td></tr>
+<tr><th scope="row">108</th><td>0.05</td><td>15</td><td>30</td><td>0.55</td><td>0.5</td><td>109</td><td>4.373757</td></tr>
+<tr><th scope="row">63</th><td>0.05</td><td>15</td><td>10</td><td>0.85</td><td>0.3</td><td> 58</td><td>4.374453</td></tr>
+<tr><th scope="row">219</th><td>0.05</td><td> 5</td><td>10</td><td>0.85</td><td>0.7</td><td> 76</td><td>4.376021</td></tr>
+<tr><th scope="row">68</th><td>0.03</td><td>10</td><td>20</td><td>0.85</td><td>0.3</td><td>100</td><td>4.376256</td></tr>
+<tr><th scope="row">21</th><td>0.05</td><td> 5</td><td>30</td><td>0.55</td><td>0.3</td><td>129</td><td>4.376351</td></tr>
+<tr><th scope="row">209</th><td>0.03</td><td> 5</td><td>30</td><td>0.70</td><td>0.7</td><td>117</td><td>4.376803</td></tr>
+<tr><th scope="row">113</th><td>0.03</td><td>10</td><td>10</td><td>0.70</td><td>0.5</td><td> 82</td><td>4.379972</td></tr>
+<tr><th scope="row">126</th><td>0.05</td><td>15</td><td>20</td><td>0.70</td><td>0.5</td><td> 56</td><td>4.380636</td></tr>
+<tr><th scope="row">114</th><td>0.05</td><td>10</td><td>10</td><td>0.70</td><td>0.5</td><td> 89</td><td>4.380916</td></tr>
+<tr><th scope="row">221</th><td>0.03</td><td>10</td><td>10</td><td>0.85</td><td>0.7</td><td> 75</td><td>4.381401</td></tr>
+<tr><th scope="row">117</th><td>0.05</td><td>15</td><td>10</td><td>0.70</td><td>0.5</td><td> 44</td><td>4.384134</td></tr>
+<tr><th scope="row">207</th><td>0.05</td><td>15</td><td>20</td><td>0.70</td><td>0.7</td><td> 66</td><td>4.384503</td></tr>
+<tr><th scope="row">6</th><td>0.05</td><td>10</td><td>10</td><td>0.55</td><td>0.3</td><td> 41</td><td>4.384608</td></tr>
+<tr><th scope="row">8</th><td>0.03</td><td>15</td><td>10</td><td>0.55</td><td>0.3</td><td> 93</td><td>4.387780</td></tr>
+<tr><th scope="row">141</th><td>0.05</td><td>10</td><td>10</td><td>0.85</td><td>0.5</td><td> 44</td><td>4.388495</td></tr>
+<tr><th scope="row">42</th><td>0.05</td><td>10</td><td>20</td><td>0.70</td><td>0.3</td><td> 44</td><td>4.389290</td></tr>
+<tr><th scope="row">95</th><td>0.03</td><td>10</td><td>20</td><td>0.55</td><td>0.5</td><td>119</td><td>4.390011</td></tr>
+<tr><th scope="row">30</th><td>0.05</td><td> 5</td><td>10</td><td>0.70</td><td>0.3</td><td> 68</td><td>4.393934</td></tr>
+<tr><th scope="row">36</th><td>0.05</td><td>15</td><td>10</td><td>0.70</td><td>0.3</td><td> 28</td><td>4.398709</td></tr>
+<tr><th scope="row">33</th><td>0.05</td><td>10</td><td>10</td><td>0.70</td><td>0.3</td><td> 94</td><td>4.401624</td></tr>
+<tr><th scope="row">35</th><td>0.03</td><td>15</td><td>10</td><td>0.70</td><td>0.3</td><td> 93</td><td>4.407226</td></tr>
+<tr><th scope="row">69</th><td>0.05</td><td>10</td><td>20</td><td>0.85</td><td>0.3</td><td> 47</td><td>4.411273</td></tr>
+<tr><th scope="row">32</th><td>0.03</td><td>10</td><td>10</td><td>0.70</td><td>0.3</td><td> 69</td><td>4.411327</td></tr>
+<tr><th scope="row">171</th><td>0.05</td><td>15</td><td>10</td><td>0.55</td><td>0.7</td><td> 30</td><td>4.421162</td></tr>
+<tr><th scope="row">15</th><td>0.05</td><td>10</td><td>20</td><td>0.55</td><td>0.3</td><td> 57</td><td>4.434471</td></tr>
+<tr><th scope="row">195</th><td>0.05</td><td>10</td><td>10</td><td>0.70</td><td>0.7</td><td> 27</td><td>4.450821</td></tr>
 </tbody>
 </table>
 </div>
@@ -13461,22 +13638,22 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=6497fb79">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=a32d7009">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Refit-final-models-on-train-+-validation">Refit final models on train + validation<a class="anchor-link" href="#Refit-final-models-on-train-+-validation">¶</a></h3>
+<h2 id="Refit-final-models-on-train-+-validation">Refit final models on train + validation<a class="anchor-link" href="#Refit-final-models-on-train-+-validation">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=366fabae">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=0f32b6ab">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [338]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [73]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="n">os_train_valid</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">os_train</span><span class="p">,</span><span class="w"> </span><span class="n">os_valid</span><span class="p">)</span>
@@ -13510,16 +13687,18 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=64f46d8b">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=67260c56">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [339]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [74]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="n">best_os_xgb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">os_xgb_valid_results</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
 <span class="n">best_dfc_xgb</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">dfc_xgb_valid_results</span><span class="p">[</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="p">]</span>
+
+<span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 
 <span class="c1"># Final overall survival XGBoost survival model</span>
 <span class="n">os_xgb_final</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">xgb.train</span><span class="p">(</span>
@@ -13560,22 +13739,22 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=1abcf7db">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=d9a4a463">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Final-test-set-C-index">Final test-set C-index<a class="anchor-link" href="#Final-test-set-C-index">¶</a></h3>
+<h2 id="Final-test-set-C-index">Final test-set C-index<a class="anchor-link" href="#Final-test-set-C-index">¶</a></h2>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e7369688">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=851b9385">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [340]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [75]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="n">os_xgb_test_risk</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">os_xgb_final</span><span class="p">,</span><span class="w"> </span><span class="n">os_dtest_final</span><span class="p">)</span>
@@ -13616,8 +13795,8 @@ No. of variables tried at each split: 100
 <tr><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
 </thead>
 <tbody>
-<tr><td>overall_survival </td><td>0.7372460</td></tr>
-<tr><td>death_from_cancer</td><td>0.7335886</td></tr>
+<tr><td>overall_survival </td><td>0.7180587</td></tr>
+<tr><td>death_from_cancer</td><td>0.7170405</td></tr>
 </tbody>
 </table>
 </div>
@@ -13625,13 +13804,104 @@ No. of variables tried at each split: 100
 </div>
 </div>
 </div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=9e84e2ee">
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=599de4e5">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e02d66ad">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="Model-Comparison">Model Comparison<a class="anchor-link" href="#Model-Comparison">¶</a></h1>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6ae52a55">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [76]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-r"><pre><span></span><span class="c1"># Final summary tables focused only on test C-index</span>
+
+<span class="c1"># Overall survival</span>
+<span class="n">final_os_summary</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="w">  </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"Random Forest"</span><span class="p">,</span><span class="w"> </span><span class="s">"Boosting"</span><span class="p">),</span>
+<span class="w">  </span><span class="n">event_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"overall_survival"</span><span class="p">,</span><span class="w"> </span><span class="s">"overall_survival"</span><span class="p">),</span>
+<span class="w">  </span><span class="n">cindex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<span class="w">    </span><span class="n">final_rf_results</span><span class="o">$</span><span class="n">test_cindex</span><span class="p">[</span><span class="n">final_rf_results</span><span class="o">$</span><span class="n">event_var</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"overall_survival"</span><span class="p">],</span>
+<span class="w">    </span><span class="n">final_xgb_results</span><span class="o">$</span><span class="n">test_cindex</span><span class="p">[</span><span class="n">final_xgb_results</span><span class="o">$</span><span class="n">event_var</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"overall_survival"</span><span class="p">]</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">)</span><span class="w"> </span>
+
+<span class="c1"># Death from cancer</span>
+<span class="n">final_dfc_summary</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span>
+<span class="w">  </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"Bagging"</span><span class="p">,</span><span class="w"> </span><span class="s">"Random Forest"</span><span class="p">,</span><span class="w"> </span><span class="s">"Boosting"</span><span class="p">),</span>
+<span class="w">  </span><span class="n">event_var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">"death_from_cancer"</span><span class="p">,</span><span class="w"> </span><span class="s">"death_from_cancer"</span><span class="p">,</span><span class="w"> </span><span class="s">"death_from_cancer"</span><span class="p">),</span>
+<span class="w">  </span><span class="n">cindex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span>
+<span class="w">    </span><span class="n">baseline_results</span><span class="o">$</span><span class="n">Test_C_Index</span><span class="p">[</span><span class="m">1</span><span class="p">],</span>
+<span class="w">    </span><span class="n">final_rf_results</span><span class="o">$</span><span class="n">test_cindex</span><span class="p">[</span><span class="n">final_rf_results</span><span class="o">$</span><span class="n">event_var</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"death_from_cancer"</span><span class="p">],</span>
+<span class="w">    </span><span class="n">final_xgb_results</span><span class="o">$</span><span class="n">test_cindex</span><span class="p">[</span><span class="n">final_xgb_results</span><span class="o">$</span><span class="n">event_var</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">"death_from_cancer"</span><span class="p">]</span>
+<span class="w">  </span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">final_os_summary</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">cindex</span><span class="p">))</span>
+
+<span class="n">final_dfc_summary</span><span class="w"> </span><span class="o">%&gt;%</span>
+<span class="w">  </span><span class="nf">arrange</span><span class="p">(</span><span class="nf">desc</span><span class="p">(</span><span class="n">cindex</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<table class="dataframe">
+<caption>A data.frame: 2 × 3</caption>
+<thead>
+<tr><th scope="col">model</th><th scope="col">event_var</th><th scope="col">cindex</th></tr>
+<tr><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+<tr><td>Random Forest</td><td>overall_survival</td><td>0.7399549</td></tr>
+<tr><td>Boosting     </td><td>overall_survival</td><td>0.7180587</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<table class="dataframe">
+<caption>A data.frame: 3 × 3</caption>
+<thead>
+<tr><th scope="col">model</th><th scope="col">event_var</th><th scope="col">cindex</th></tr>
+<tr><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;chr&gt;</th><th scope="col">&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+<tr><td>Bagging      </td><td>death_from_cancer</td><td>0.7398796</td></tr>
+<tr><td>Random Forest</td><td>death_from_cancer</td><td>0.7245624</td></tr>
+<tr><td>Boosting     </td><td>death_from_cancer</td><td>0.7170405</td></tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>
