@@ -8568,11 +8568,11 @@ Negative Positive
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [17]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1"># Imputation is random sampling</span>
-<span class="nf">set.seed</span><span class="p">(</span><span class="m">2026</span><span class="p">)</span><span class="w"> </span>
+<span class="nf">set.seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 
 <span class="c1"># Re-define `tumor_stage` as character for imputation</span>
 <span class="n">tumor_stage_chr</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.character</span><span class="p">(</span><span class="n">clinical_vars</span><span class="o">$</span><span class="n">tumor_stage</span><span class="p">)</span>
@@ -11861,7 +11861,7 @@ Breast Mixed Ductal and Lobular Carcinoma
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-r"><pre><span></span><span class="c1">#  Fit a baseline bagging model</span>
@@ -12257,7 +12257,7 @@ Validation_C_Index = 0.7559235</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>The tuned bagging survival model achieved a lower test Integrated Brier Score (0.183) compared to the baseline model (0.194), indicating improved accuracy in predicted survival probabilities. The concordance index remained stable (0.738 vs. 0.740), suggesting that the model maintained strong discriminative ability while improving calibration.</p>
+<p>The tuned bagging survival model achieved a lower test Integrated Brier Score (0.188) compared to the baseline model (0.194), indicating improved accuracy in predicted survival probabilities. The concordance index remained stable (0.738 vs. 0.755), suggesting that the model maintained strong discriminative ability while improving calibration.</p>
 </div>
 </div>
 </div>
